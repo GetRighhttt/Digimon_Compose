@@ -93,8 +93,8 @@ internal fun BrowseScreen(
             state = gridState,
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 28.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             item(key = "intro", span = { GridItemSpan(maxLineSpan) }) {
                 SearchField(state.criteria.query) { dispatch(BrowseIntent.QueryChanged(it)) }
@@ -293,15 +293,21 @@ private fun SearchField(
             onChange,
             singleLine = true,
             modifier =
-                Modifier.weight(1f).padding(vertical = 16.dp).semantics {
+                Modifier.weight(1f).padding(vertical = 18.dp).semantics {
                     contentDescription = "Search Digimon by name"
                 },
-            textStyle = TextStyle(color = colors.text, fontSize = 16.sp),
+            textStyle = TextStyle(color = colors.text, fontSize = 17.sp),
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             keyboardActions = KeyboardActions(onSearch = { keyboard?.hide() }),
             decorationBox = { field ->
                 Box {
-                    if (query.isEmpty()) GuideText("Search Digimon", color = colors.secondary)
+                    if (query.isEmpty()) {
+                        GuideText(
+                            "Search Digimon",
+                            size = 17,
+                            color = colors.secondary,
+                        )
+                    }
                     field()
                 }
             },

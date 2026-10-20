@@ -2,6 +2,8 @@
 
 Last implementation checks: October 19, 2026. The UI update passed the formatting check, all 50 common tests, the Android debug build, shared iOS compilation, and the complete unsigned iOS host build. Grid, compact list, and profile rendering were checked on the Samsung in light appearance, with an additional dark grid/profile pass.
 
+The later readability adjustment also passed formatting, all 50 tests, the Android debug build, and shared iOS simulator compilation. A signed iPhone build succeeded using the locally configured development team and was installed on the connected iPhone 17 Pro.
+
 ## Automated checks
 
 All 50 common tests passed on the Android host, with no failures or skips:
@@ -47,13 +49,15 @@ The current Android build was installed on a physical Samsung SM-G990U. The foll
 
 The README gallery contains actual device screenshots. The existing Agumon splash capture comes from the earlier launch-animation check; this pass did not change the splash.
 
+On the physical iPhone 17 Pro, the app filled the screen with one safe-area inset. The denser appearance prompted larger catalog labels, more search/card padding, wider grid gaps, and larger profile body text. The updated catalog and Airdramon profile were visually inspected in dark appearance. The Samsung gallery predates this text and spacing adjustment. This was a visual check, not a complete iOS interaction or accessibility pass.
+
 An initial catalog request once displayed retry while stage options loaded. Subsequent cold launches loaded the catalog. The cause was not established; the UI exposes the failure rather than treating it as empty results.
 
 The earlier fake-data milestone ran on an Android API 36 emulator and an iPhone 17 Pro simulator. Search, combined filtering to an empty result, opening selection, and returning with the query were checked on that iOS milestone. Those checks predate the current profile and redesign. Both virtual devices were stopped when testing moved to the Samsung.
 
 ## Limits and screenshot history
 
-Current iOS rendering/interactions, screen-reader behavior, the full range of text sizes, and complete process restoration have not had a full device pass. The larger-text check covered the catalog at 1.3×, not every screen or accessibility setting. Host tests are not instrumented UI tests. iOS compilation/linking confirms build integration, not interactive behavior.
+The complete set of iOS interactions, iOS light appearance, screen-reader behavior, the full range of text sizes, and complete process restoration have not had a full device pass. The larger-text check covered the catalog at 1.3×, not every screen or accessibility setting. Host tests are not instrumented UI tests. iOS compilation/linking confirms build integration, not interactive behavior.
 
 Current images: [splash](screenshots/splash-samsung-animation.png), [catalog](screenshots/browse-samsung-catalog.png), [compact list](screenshots/browse-samsung-list.png), [Agumon profile](screenshots/profile-samsung-agumon.png), [dark catalog](screenshots/browse-samsung-dark.png), and [dark profile](screenshots/profile-samsung-dark.png).
 

@@ -98,7 +98,7 @@ internal fun ProfileScreen(
                     ProfileSection("Overview") {
                         GuideText(
                             content.description ?: MISSING_DESCRIPTION,
-                            size = 15,
+                            size = 17,
                             color = colors.secondary,
                         )
                     }
@@ -161,9 +161,9 @@ private fun ProfileSkills(content: ProfileContent) {
     ProfileSection("Skills · ${content.skills.size}") {
         visibleSkills.forEach { skill ->
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                GuideText(skill.name, size = 15, weight = FontWeight.SemiBold)
+                GuideText(skill.name, size = 17, weight = FontWeight.SemiBold)
                 if (skill.description.isNotBlank()) {
-                    GuideText(skill.description, size = 14, color = colors.secondary)
+                    GuideText(skill.description, size = 16, color = colors.secondary)
                 }
             }
         }
@@ -228,7 +228,7 @@ private fun StatPanel(
         modifier = modifier.background(colors.surface, RoundedCornerShape(16.dp)).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
-        GuideText(label, size = 10, weight = FontWeight.Bold, color = colors.secondary)
+        GuideText(label, size = 11, weight = FontWeight.Bold, color = colors.secondary)
         GuideText(value, size = 20, weight = FontWeight.SemiBold, color = colors.accent)
     }
 }

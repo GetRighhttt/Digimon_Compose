@@ -207,7 +207,7 @@ internal fun GuideChip(
     ) {
         GuideText(
             text,
-            size = 13,
+            size = 14,
             weight = if (selected) FontWeight.SemiBold else FontWeight.Medium,
             color = if (selected) colors.onAccent else colors.secondary,
         )
@@ -222,7 +222,7 @@ internal fun GuideTag(text: String) {
             .background(colors.tint, RoundedCornerShape(10.dp))
             .padding(horizontal = 12.dp, vertical = 7.dp),
     ) {
-        GuideText(text, size = 12, weight = FontWeight.Medium, color = colors.accent)
+        GuideText(text, size = 13, weight = FontWeight.Medium, color = colors.accent)
     }
 }
 

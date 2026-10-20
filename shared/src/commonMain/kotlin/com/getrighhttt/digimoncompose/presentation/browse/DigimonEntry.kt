@@ -58,7 +58,7 @@ internal fun DigimonEntry(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            EntryArtwork(card, Modifier.size(72.dp).clip(RoundedCornerShape(12.dp)))
+            EntryArtwork(card, Modifier.size(80.dp).clip(RoundedCornerShape(12.dp)))
             EntryName(card, Modifier.weight(1f))
             GuideIcon(GuideIconKind.Forward, Modifier.padding(end = 8.dp).size(18.dp))
         }
@@ -66,7 +66,7 @@ internal fun DigimonEntry(
         Column(modifier) {
             EntryArtwork(card, Modifier.fillMaxWidth().aspectRatio(1.12f))
             Row(
-                Modifier.fillMaxWidth().background(colors.tint.copy(alpha = 0.45f)).padding(14.dp),
+                Modifier.fillMaxWidth().background(colors.tint.copy(alpha = 0.45f)).padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(6.dp),
             ) {
@@ -105,13 +105,13 @@ private fun EntryName(
     Column(modifier, verticalArrangement = Arrangement.spacedBy(4.dp)) {
         GuideText(
             "NO. ${card.id.toString().padStart(4, '0')}",
-            size = 10,
+            size = 11,
             weight = FontWeight.Bold,
             color = colors.secondary,
         )
         GuideText(
             card.name,
-            size = 15,
+            size = 17,
             weight = FontWeight.SemiBold,
             minLines = if (reserveNameSpace) 2 else 1,
             maxLines = 2,
