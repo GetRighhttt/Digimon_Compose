@@ -7,10 +7,11 @@ A Digimon field guide built with Compose Multiplatform for Android and iOS. This
 The iPhone 17 Pro captures below show the current text sizes and spacing in dark appearance, using live data on October 19, 2026.
 
 <table>
-  <tr><th>iPhone catalog</th><th>iPhone profile</th></tr>
+  <tr><th>iPhone catalog</th><th>Compact list</th><th>iPhone profile</th></tr>
   <tr>
-    <td><img src="docs/screenshots/browse-iphone-catalog.png" width="280" alt="Dark iPhone catalog with search, stage filters, and numbered Digimon artwork cards"></td>
-    <td><img src="docs/screenshots/profile-iphone-airdramon.png" width="280" alt="Airdramon profile on iPhone with a teal cover, classification tags, and quick facts"></td>
+    <td><img src="docs/screenshots/browse-iphone-catalog.png" width="240" alt="Dark iPhone catalog with search, stage filters, and numbered Digimon artwork cards"></td>
+    <td><img src="docs/screenshots/browse-iphone-list.png" width="240" alt="Current compact iPhone catalog with larger names and artwork thumbnails"></td>
+    <td><img src="docs/screenshots/profile-iphone-agumon.png" width="240" alt="Agumon profile on iPhone with a teal cover, classification tags, and quick facts"></td>
   </tr>
 </table>
 
