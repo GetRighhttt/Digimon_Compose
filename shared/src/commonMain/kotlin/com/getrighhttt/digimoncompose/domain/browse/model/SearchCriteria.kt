@@ -6,4 +6,7 @@ package com.getrighhttt.digimoncompose.domain.browse.model
  * @author Stefan Bayne
  * @since 2026-10-19
  */
-data class SearchCriteria(val name: String = "", val level: String? = null)
+data class SearchCriteria(
+    val name: String = "",
+    val level: String? = null,
+)

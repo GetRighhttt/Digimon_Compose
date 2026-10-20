@@ -10,6 +10,9 @@ import androidx.compose.runtime.Composable
  * @since 2026-10-19
  */
 @Composable
-internal actual fun PlatformBackHandler(enabled: Boolean, onBack: () -> Unit) {
+internal actual fun PlatformBackHandler(
+    enabled: Boolean,
+    onBack: () -> Unit,
+) {
     BackHandler(enabled, onBack)
 }

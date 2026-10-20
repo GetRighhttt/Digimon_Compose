@@ -9,4 +9,8 @@ import kotlinx.serialization.Serializable
  * @since 2026-10-19
  */
 @Serializable
-internal data class DapiSummaryDto(val id: Int, val name: String, val image: String? = null)
+internal data class DapiSummaryDto(
+    val id: Int,
+    val name: String,
+    val image: String? = null,
+)

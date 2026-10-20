@@ -6,4 +6,9 @@ package com.getrighhttt.digimoncompose.presentation.browse.model
  * @author Stefan Bayne
  * @since 2026-10-19
  */
-enum class BrowseError { Unavailable, InvalidPage, InvalidResponse, RequestRejected }
+enum class BrowseError {
+    Unavailable,
+    InvalidPage,
+    InvalidResponse,
+    RequestRejected,
+}

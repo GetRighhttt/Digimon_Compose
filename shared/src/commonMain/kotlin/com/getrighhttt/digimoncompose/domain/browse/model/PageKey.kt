@@ -6,6 +6,10 @@ package com.getrighhttt.digimoncompose.domain.browse.model
  * @author Stefan Bayne
  * @since 2026-10-19
  */
-data class PageKey(val index: Int) {
-    init { require(index >= 0) }
+data class PageKey(
+    val index: Int,
+) {
+    init {
+        require(index >= 0)
+    }
 }

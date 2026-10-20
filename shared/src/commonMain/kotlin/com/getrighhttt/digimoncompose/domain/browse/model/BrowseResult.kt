@@ -7,6 +7,11 @@ package com.getrighhttt.digimoncompose.domain.browse.model
  * @since 2026-10-19
  */
 sealed interface BrowseResult<out T> {
-    data class Success<T>(val value: T) : BrowseResult<T>
-    data class Failure(val reason: BrowseFailure) : BrowseResult<Nothing>
+    data class Success<T>(
+        val value: T,
+    ) : BrowseResult<T>
+
+    data class Failure(
+        val reason: BrowseFailure,
+    ) : BrowseResult<Nothing>
 }

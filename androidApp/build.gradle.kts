@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.compose.compiler)
 }
+
 android {
     namespace = "com.getrighhttt.digimoncompose"
     compileSdk = 37
@@ -18,6 +19,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
+
 dependencies {
     implementation(project(":shared"))
     implementation(libs.androidx.lifecycle.viewmodel)

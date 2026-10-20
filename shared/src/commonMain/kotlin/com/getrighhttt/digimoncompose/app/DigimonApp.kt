@@ -1,26 +1,34 @@
 package com.getrighhttt.digimoncompose.app
 
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.getrighhttt.digimoncompose.presentation.browse.BrowseScreen
 import com.getrighhttt.digimoncompose.presentation.browse.BrowseStore
 import com.getrighhttt.digimoncompose.presentation.browse.model.BrowseIntent
-import com.getrighhttt.digimoncompose.presentation.design.FieldGuideTheme
 import com.getrighhttt.digimoncompose.presentation.design.DigimonSplash
+import com.getrighhttt.digimoncompose.presentation.design.FieldGuideTheme
 import com.getrighhttt.digimoncompose.presentation.profile.ProfileScreen
 import com.getrighhttt.digimoncompose.presentation.profile.ProfileStore
-import com.getrighhttt.digimoncompose.presentation.profile.model.*
+import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileIntent
+import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileState
 
 /**
- * Coordinates splash and profile selection while Browse keeps its owner and scroll state.
+ * Coordinates splash and profile selection while keeping Browse state alive.
  *
  * @author Stefan Bayne
  * @since 2026-10-19
  */
 @Composable
-fun DigimonApp(store: BrowseStore, profileStore: ProfileStore) = FieldGuideTheme {
+fun DigimonApp(
+    store: BrowseStore,
+    profileStore: ProfileStore,
+) = FieldGuideTheme {
     val state by store.state.collectAsStateWithLifecycle()
     val profileState by profileStore.state.collectAsStateWithLifecycle()
     val gridState = rememberLazyGridState()
@@ -39,10 +47,23 @@ fun DigimonApp(store: BrowseStore, profileStore: ProfileStore) = FieldGuideTheme
         DigimonSplash { showSplash = false }
     } else if (selectedId == null) {
         BrowseScreen(state, gridState, store::dispatch) {
-            selectedId = it.id; selectedName = it.name; selectedImage = it.image
+            selectedId = it.id
+            selectedName = it.name
+            selectedImage = it.image
         }
     } else {
-        val displayed = if (profileState.id == selectedId) profileState else ProfileState(id = selectedId, loading = true)
-        ProfileScreen(displayed, selectedName, selectedImage, { selectedId = null }, { profileStore.dispatch(ProfileIntent.Retry) })
+        val displayed =
+            if (profileState.id == selectedId) {
+                profileState
+            } else {
+                ProfileState(id = selectedId, loading = true)
+            }
+        ProfileScreen(
+            displayed,
+            selectedName,
+            selectedImage,
+            { selectedId = null },
+            { profileStore.dispatch(ProfileIntent.Retry) },
+        )
     }
 }

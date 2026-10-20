@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
 }
+
 kotlin {
     android {
         namespace = "com.getrighhttt.digimoncompose.shared"

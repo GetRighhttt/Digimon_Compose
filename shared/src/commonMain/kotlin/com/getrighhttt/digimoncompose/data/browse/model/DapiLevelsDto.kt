@@ -9,4 +9,7 @@ import kotlinx.serialization.Serializable
  * @since 2026-10-19
  */
 @Serializable
-internal data class DapiLevelsDto(val content: DapiLevelContentDto, val pageable: DapiPageDto)
+internal data class DapiLevelsDto(
+    val content: DapiLevelContentDto,
+    val pageable: DapiPageDto,
+)

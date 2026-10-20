@@ -12,9 +12,11 @@ import com.getrighhttt.digimoncompose.presentation.browse.model.DigimonCard
  * @since 2026-10-19
  */
 internal fun DigimonSummary.toCard() = DigimonCard(id, name, image)
-internal fun BrowseFailure.toUiError() = when (this) {
-    BrowseFailure.InvalidResponse -> BrowseError.InvalidResponse
-    BrowseFailure.RequestRejected -> BrowseError.RequestRejected
-    BrowseFailure.Unavailable -> BrowseError.Unavailable
-    BrowseFailure.InvalidPage -> BrowseError.InvalidPage
-}
+
+internal fun BrowseFailure.toUiError() =
+    when (this) {
+        BrowseFailure.InvalidResponse -> BrowseError.InvalidResponse
+        BrowseFailure.RequestRejected -> BrowseError.RequestRejected
+        BrowseFailure.Unavailable -> BrowseError.Unavailable
+        BrowseFailure.InvalidPage -> BrowseError.InvalidPage
+    }

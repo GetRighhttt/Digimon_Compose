@@ -43,6 +43,8 @@ The project configures a Java 25 Gradle daemon through `gradle/gradle-daemon-jvm
 
 For Android, open the project in Android Studio and run `androidApp`. For iOS, open `iosApp/iosApp.xcodeproj` in Xcode and run the `iosApp` scheme. Physical iOS devices require your signing team. The application identifier is `com.getrighhttt.digimoncompose`.
 
+Format Kotlin source and build scripts with `./gradlew formatKotlin`, then check with `./gradlew checkKotlinFormatting`. The shared `.editorconfig` uses four-space indentation, a 100-character line limit, and keeps blank lines between model property groups. KDoc goes after imports and includes `@author` and `@since`.
+
 The stack uses Kotlin, Compose Multiplatform, coroutines/StateFlow, Ktor, Kotlin serialization, and Coil. Dependency versions live in [the version catalog](gradle/libs.versions.toml). Platform hosts live in `androidApp` and `iosApp`; shared implementation and common tests live in `shared`.
 
 ## Documentation

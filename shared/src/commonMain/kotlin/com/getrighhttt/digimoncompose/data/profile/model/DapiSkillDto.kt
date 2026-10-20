@@ -9,4 +9,7 @@ import kotlinx.serialization.Serializable
  * @since 2026-10-19
  */
 @Serializable
-internal data class DapiSkillDto(val skill: String, val description: String = "")
+internal data class DapiSkillDto(
+    val skill: String,
+    val description: String = "",
+)

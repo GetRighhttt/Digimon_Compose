@@ -6,4 +6,7 @@ package com.getrighhttt.digimoncompose.domain.profile.model
  * @author Stefan Bayne
  * @since 2026-10-19
  */
-data class DigimonSkill(val name: String, val description: String)
+data class DigimonSkill(
+    val name: String,
+    val description: String,
+)

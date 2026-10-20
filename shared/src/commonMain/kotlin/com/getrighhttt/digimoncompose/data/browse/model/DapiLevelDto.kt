@@ -9,4 +9,7 @@ import kotlinx.serialization.Serializable
  * @since 2026-10-19
  */
 @Serializable
-internal data class DapiLevelDto(val id: Int, val name: String)
+internal data class DapiLevelDto(
+    val id: Int,
+    val name: String,
+)

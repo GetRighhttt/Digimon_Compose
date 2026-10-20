@@ -6,4 +6,9 @@ package com.getrighhttt.digimoncompose.presentation.profile.model
  * @author Stefan Bayne
  * @since 2026-10-19
  */
-enum class ProfileError { Unavailable, NotFound, InvalidResponse, RequestRejected }
+enum class ProfileError {
+    Unavailable,
+    NotFound,
+    InvalidResponse,
+    RequestRejected,
+}

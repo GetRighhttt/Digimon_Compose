@@ -8,7 +8,12 @@ package com.getrighhttt.digimoncompose.data.browse.model
  */
 internal sealed class DapiException : Exception() {
     class NotFound : DapiException()
-    class Http(val status: Int) : DapiException()
+
+    class Http(
+        val status: Int,
+    ) : DapiException()
+
     class InvalidResponse : DapiException()
+
     class Unavailable : DapiException()
 }

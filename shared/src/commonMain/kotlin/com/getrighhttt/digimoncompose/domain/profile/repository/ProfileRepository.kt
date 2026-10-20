@@ -8,4 +8,6 @@ import com.getrighhttt.digimoncompose.domain.profile.model.ProfileResult
  * @author Stefan Bayne
  * @since 2026-10-19
  */
-interface ProfileRepository { suspend fun profile(id: Int): ProfileResult }
+interface ProfileRepository {
+    suspend fun profile(id: Int): ProfileResult
+}

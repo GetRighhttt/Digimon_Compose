@@ -1,11 +1,20 @@
 package com.getrighhttt.digimoncompose.presentation.design
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -13,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -34,85 +44,177 @@ import androidx.compose.ui.unit.sp
  * @since 2026-10-19
  */
 @Composable
-internal fun GuideText(text: String, size: Int = 16, weight: FontWeight = FontWeight.Normal,
-    color: Color = LocalFieldGuideColors.current.text, modifier: Modifier = Modifier,
-    maxLines: Int = Int.MAX_VALUE, minLines: Int = 1) {
-    BasicText(text, modifier, style = TextStyle(color = color, fontSize = size.sp,
-        fontWeight = weight, lineHeight = (size * 1.4f).sp),
-        maxLines = maxLines, minLines = minLines, overflow = TextOverflow.Ellipsis)
+internal fun GuideText(
+    text: String,
+    size: Int = 16,
+    weight: FontWeight = FontWeight.Normal,
+    color: Color = LocalFieldGuideColors.current.text,
+    modifier: Modifier = Modifier,
+    maxLines: Int = Int.MAX_VALUE,
+    minLines: Int = 1,
+) {
+    BasicText(
+        text,
+        modifier,
+        style =
+            TextStyle(
+                color = color,
+                fontSize = size.sp,
+                fontWeight = weight,
+                lineHeight = (size * 1.4f).sp,
+            ),
+        maxLines = maxLines,
+        minLines = minLines,
+        overflow = TextOverflow.Ellipsis,
+    )
 }
 
 @Composable
-internal fun GuideIcon(kind: GuideIconKind, modifier: Modifier = Modifier,
-    color: Color = LocalFieldGuideColors.current.accent) {
+internal fun GuideIcon(
+    kind: GuideIconKind,
+    modifier: Modifier = Modifier,
+    color: Color = LocalFieldGuideColors.current.accent,
+) {
     Canvas(modifier.size(22.dp)) {
-        val w = size.width; val h = size.height; val stroke = 1.8.dp.toPx()
-        fun line(a: Offset, b: Offset) = drawLine(color, a, b, stroke, StrokeCap.Round)
+        val width = size.width
+        val height = size.height
+        val stroke = 1.8.dp.toPx()
+
+        fun line(
+            start: Offset,
+            end: Offset,
+        ) = drawLine(color, start, end, stroke, StrokeCap.Round)
         when (kind) {
             GuideIconKind.Search -> {
-                drawCircle(color, w * .27f, Offset(w * .43f, h * .43f), style = Stroke(stroke))
-                line(Offset(w * .64f, h * .64f), Offset(w * .87f, h * .87f))
+                drawCircle(
+                    color,
+                    width * 0.27f,
+                    Offset(width * 0.43f, height * 0.43f),
+                    style = Stroke(stroke),
+                )
+                line(Offset(width * 0.64f, height * 0.64f), Offset(width * 0.87f, height * 0.87f))
             }
+
             GuideIconKind.Refresh -> {
-                drawArc(color, 40f, 285f, false, Offset(w * .17f, h * .17f), Size(w * .66f, h * .66f), style = Stroke(stroke, cap = StrokeCap.Round))
-                line(Offset(w * .78f, h * .15f), Offset(w * .84f, h * .4f))
-                line(Offset(w * .84f, h * .4f), Offset(w * .61f, h * .35f))
+                drawArc(
+                    color,
+                    40f,
+                    285f,
+                    false,
+                    Offset(width * 0.17f, height * 0.17f),
+                    Size(width * 0.66f, height * 0.66f),
+                    style = Stroke(stroke, cap = StrokeCap.Round),
+                )
+                line(Offset(width * 0.78f, height * 0.15f), Offset(width * 0.84f, height * 0.4f))
+                line(Offset(width * 0.84f, height * 0.4f), Offset(width * 0.61f, height * 0.35f))
             }
-            GuideIconKind.Back, GuideIconKind.Forward -> {
+
+            GuideIconKind.Back,
+            GuideIconKind.Forward,
+            -> {
                 val reverse = kind == GuideIconKind.Back
-                val x = if (reverse) .33f else .67f
-                val other = if (reverse) .67f else .33f
-                line(Offset(w * other, h * .23f), Offset(w * x, h * .5f))
-                line(Offset(w * x, h * .5f), Offset(w * other, h * .77f))
+                val x = if (reverse) 0.33f else 0.67f
+                val other = if (reverse) 0.67f else 0.33f
+                line(Offset(width * other, height * 0.23f), Offset(width * x, height * 0.5f))
+                line(Offset(width * x, height * 0.5f), Offset(width * other, height * 0.77f))
             }
+
             GuideIconKind.Close -> {
-                line(Offset(w * .25f, h * .25f), Offset(w * .75f, h * .75f))
-                line(Offset(w * .75f, h * .25f), Offset(w * .25f, h * .75f))
+                line(Offset(width * 0.25f, height * 0.25f), Offset(width * 0.75f, height * 0.75f))
+                line(Offset(width * 0.75f, height * 0.25f), Offset(width * 0.25f, height * 0.75f))
             }
-            GuideIconKind.Grid -> for (x in 0..1) for (y in 0..1) {
-                drawRoundRect(color, Offset(w * (.14f + x * .4f), h * (.14f + y * .4f)), Size(w * .28f, h * .28f),
-                    cornerRadius = androidx.compose.ui.geometry.CornerRadius(2.dp.toPx()))
+
+            GuideIconKind.Grid -> {
+                for (x in 0..1) {
+                    for (y in 0..1) {
+                        drawRoundRect(
+                            color,
+                            Offset(width * (0.14f + x * 0.4f), height * (0.14f + y * 0.4f)),
+                            Size(width * 0.28f, height * 0.28f),
+                            cornerRadius = CornerRadius(2.dp.toPx()),
+                        )
+                    }
+                }
             }
         }
     }
 }
 
 @Composable
-internal fun GuideIconButton(kind: GuideIconKind, label: String, onClick: () -> Unit) {
+internal fun GuideIconButton(
+    kind: GuideIconKind,
+    label: String,
+    onClick: () -> Unit,
+) {
     val colors = LocalFieldGuideColors.current
-    Box(Modifier.size(48.dp).clip(RoundedCornerShape(16.dp)).background(colors.surface)
-        .border(1.dp, colors.border, RoundedCornerShape(16.dp))
-        .clickable(role = Role.Button, onClick = onClick).semantics { contentDescription = label },
-        contentAlignment = Alignment.Center) { GuideIcon(kind) }
+    Box(
+        Modifier
+            .size(48.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(colors.surface)
+            .border(1.dp, colors.border, RoundedCornerShape(16.dp))
+            .clickable(role = Role.Button, onClick = onClick)
+            .semantics { contentDescription = label },
+        contentAlignment = Alignment.Center,
+    ) {
+        GuideIcon(kind)
+    }
 }
 
 @Composable
-internal fun GuideButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+internal fun GuideButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val colors = LocalFieldGuideColors.current
-    Box(modifier.defaultMinSize(minHeight = 48.dp).clip(RoundedCornerShape(16.dp))
-        .background(colors.accent).clickable(role = Role.Button, onClick = onClick)
-        .padding(horizontal = 20.dp, vertical = 12.dp), contentAlignment = Alignment.Center) {
+    Box(
+        modifier
+            .defaultMinSize(minHeight = 48.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(colors.accent)
+            .clickable(role = Role.Button, onClick = onClick)
+            .padding(horizontal = 20.dp, vertical = 12.dp),
+        contentAlignment = Alignment.Center,
+    ) {
         GuideText(text, size = 14, weight = FontWeight.SemiBold, color = colors.onAccent)
     }
 }
 
 @Composable
-internal fun GuideChip(text: String, selected: Boolean, onClick: () -> Unit) {
+internal fun GuideChip(
+    text: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+) {
     val colors = LocalFieldGuideColors.current
-    Box(Modifier.defaultMinSize(minHeight = 48.dp).clip(RoundedCornerShape(16.dp))
-        .background(if (selected) colors.accent else colors.surface)
-        .border(1.dp, if (selected) colors.accent else colors.border, RoundedCornerShape(16.dp))
-        .selectable(selected, role = Role.RadioButton, onClick = onClick)
-        .padding(horizontal = 16.dp, vertical = 12.dp), contentAlignment = Alignment.Center) {
-        GuideText(text, size = 13, weight = if (selected) FontWeight.SemiBold else FontWeight.Medium,
-            color = if (selected) colors.onAccent else colors.secondary)
+    Box(
+        Modifier
+            .defaultMinSize(minHeight = 48.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(if (selected) colors.accent else colors.surface)
+            .border(1.dp, if (selected) colors.accent else colors.border, RoundedCornerShape(16.dp))
+            .selectable(selected, role = Role.RadioButton, onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        GuideText(
+            text,
+            size = 13,
+            weight = if (selected) FontWeight.SemiBold else FontWeight.Medium,
+            color = if (selected) colors.onAccent else colors.secondary,
+        )
     }
 }
 
 @Composable
 internal fun GuideTag(text: String) {
     val colors = LocalFieldGuideColors.current
-    Box(Modifier.background(colors.tint, RoundedCornerShape(10.dp)).padding(horizontal = 12.dp, vertical = 7.dp)) {
+    Box(
+        Modifier
+            .background(colors.tint, RoundedCornerShape(10.dp))
+            .padding(horizontal = 12.dp, vertical = 7.dp),
+    ) {
         GuideText(text, size = 12, weight = FontWeight.Medium, color = colors.accent)
     }
 }
@@ -121,10 +223,20 @@ internal fun GuideTag(text: String) {
 internal fun GuideLoading(label: String) {
     val colors = LocalFieldGuideColors.current
     val transition = rememberInfiniteTransition()
-    val angle = transition.animateFloat(0f, 360f, infiniteRepeatable(tween(1000, easing = LinearEasing)))
-    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+    val angle =
+        transition.animateFloat(0f, 360f, infiniteRepeatable(tween(1000, easing = LinearEasing)))
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
         Canvas(Modifier.size(20.dp)) {
-            drawArc(colors.accent, angle.value, 260f, false, style = Stroke(2.dp.toPx(), cap = StrokeCap.Round))
+            drawArc(
+                colors.accent,
+                angle.value,
+                260f,
+                false,
+                style = Stroke(2.dp.toPx(), cap = StrokeCap.Round),
+            )
         }
         GuideText(label, size = 14, color = colors.secondary)
     }

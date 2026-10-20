@@ -7,14 +7,16 @@ import androidx.compose.ui.window.ComposeUIViewController
 import platform.UIKit.UIViewController
 
 /**
- * Hosts shared Compose on iOS and closes both feature stores and their HTTP session when the composition is disposed.
+ * Hosts shared Compose on iOS and closes both feature stores and their HTTP session
+ * when the composition is disposed.
  *
  * @author Stefan Bayne
  * @since 2026-10-19
  */
-fun MainViewController(): UIViewController = ComposeUIViewController {
-    val scope = rememberCoroutineScope()
-    val session = remember { BrowseSession(scope) }
-    DisposableEffect(session) { onDispose { session.close() } }
-    DigimonApp(session.store, session.profileStore)
-}
+fun createMainViewController(): UIViewController =
+    ComposeUIViewController {
+        val scope = rememberCoroutineScope()
+        val session = remember { BrowseSession(scope) }
+        DisposableEffect(session) { onDispose { session.close() } }
+        DigimonApp(session.store, session.profileStore)
+    }

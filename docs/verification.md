@@ -1,6 +1,6 @@
 # Verification record
 
-Last implementation checks: October 19, 2026. The README/documentation update changes prose and screenshot assets; build results below are from the preceding implementation checks.
+Last implementation checks: October 19, 2026. The code cleanup passed the formatting check, all 50 common tests, the Android debug build, shared iOS compilation, and the complete unsigned iOS host build. Catalog and profile rendering were checked again on the Samsung.
 
 ## Automated checks
 
@@ -18,7 +18,7 @@ All 50 common tests passed on the Android host, with no failures or skips:
 Browse coverage includes debounce timing, criteria changes, cancellation, stale responses, refresh, append retry, overlapping items, empty/final pages, and level-option retry. HTTP tests use a mock engine for malformed continuations, omitted content, metadata mismatches, status errors, transport failure, and mapping. Profile tests cover loading/retry, closing/replacing requests, stale completions, and profile response validation/mapping.
 
 ```sh
-./gradlew :androidApp:assembleDebug :shared:testAndroidHostTest :shared:compileKotlinIosSimulatorArm64 --max-workers=2 --console=plain
+./gradlew checkKotlinFormatting :androidApp:assembleDebug :shared:testAndroidHostTest :shared:compileKotlinIosSimulatorArm64 --max-workers=2 --console=plain
 ```
 
 The complete unsigned iOS simulator application also built, including the bundled Compose splash resource:

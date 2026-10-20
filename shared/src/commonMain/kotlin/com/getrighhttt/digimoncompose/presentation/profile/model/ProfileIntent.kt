@@ -7,7 +7,11 @@ package com.getrighhttt.digimoncompose.presentation.profile.model
  * @since 2026-10-19
  */
 sealed interface ProfileIntent {
-    data class Open(val id: Int) : ProfileIntent
+    data class Open(
+        val id: Int,
+    ) : ProfileIntent
+
     data object Retry : ProfileIntent
+
     data object Closed : ProfileIntent
 }

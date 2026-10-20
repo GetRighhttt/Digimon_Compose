@@ -6,4 +6,7 @@ package com.getrighhttt.digimoncompose.presentation.profile.model
  * @author Stefan Bayne
  * @since 2026-10-19
  */
-data class ProfileSkill(val name: String, val description: String)
+data class ProfileSkill(
+    val name: String,
+    val description: String,
+)
