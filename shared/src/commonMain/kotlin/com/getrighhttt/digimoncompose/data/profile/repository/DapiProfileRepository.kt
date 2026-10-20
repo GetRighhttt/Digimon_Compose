@@ -7,6 +7,12 @@ import com.getrighhttt.digimoncompose.domain.profile.model.*
 import com.getrighhttt.digimoncompose.domain.profile.repository.ProfileRepository
 import kotlinx.coroutines.CancellationException
 
+/**
+ * Loads validated profiles and translates data failures into typed domain results while propagating cancellation.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 internal class DapiProfileRepository(private val source: DapiSource) : ProfileRepository {
     override suspend fun profile(id: Int): ProfileResult {
         if (id <= 0) return ProfileResult.Failure(ProfileFailure.NotFound)

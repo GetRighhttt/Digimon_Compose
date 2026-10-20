@@ -7,7 +7,12 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.test.*
 import kotlin.test.*
 
-/** Controlled completions exercise request ordering without real time or a live service. */
+/**
+ * Controlled completions exercise request ordering without real time or a live service.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 @OptIn(ExperimentalCoroutinesApi::class)
 class BrowseStoreTest {
     @Test fun repeatedStartLoadsOnce() = runTest {

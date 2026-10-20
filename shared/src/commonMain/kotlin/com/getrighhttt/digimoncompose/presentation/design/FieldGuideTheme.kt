@@ -4,6 +4,12 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 
+/**
+ * Provides the shared semantic palette and selects its colors from the system appearance.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 internal val LocalFieldGuideColors = staticCompositionLocalOf {
     FieldGuideColors(Color(0xFFF5F7F4), Color.White, Color(0xFF182C29), Color(0xFF596C67),
         Color(0xFF006B5B), Color.White, Color(0xFFDDEEE6), Color(0xFFE0E7E1), Color(0xFFA12D39))

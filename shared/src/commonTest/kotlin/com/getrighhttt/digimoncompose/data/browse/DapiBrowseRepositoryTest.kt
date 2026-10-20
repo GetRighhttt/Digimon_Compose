@@ -13,7 +13,12 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.*
 import kotlin.test.*
 
-/** Recorded response shapes exercise the real source and mapper without a live dependency. */
+/**
+ * Recorded response shapes exercise the real source and mapper without a live dependency.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 class DapiBrowseRepositoryTest {
     @Test fun blankCriteriaAreOmittedAndSuccessMapsIntoDomain() = runTest {
         withRepo({ request ->

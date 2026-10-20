@@ -7,7 +7,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.ViewModelProvider
 import com.getrighhttt.digimoncompose.app.DigimonApp
 
-/** Android owns store retention; shared Compose owns safe drawing insets. */
+/**
+ * Hosts the shared app with edge-to-edge drawing and an Android-retained session.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

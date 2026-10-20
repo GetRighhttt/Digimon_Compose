@@ -13,7 +13,12 @@ import com.getrighhttt.digimoncompose.presentation.profile.ProfileScreen
 import com.getrighhttt.digimoncompose.presentation.profile.ProfileStore
 import com.getrighhttt.digimoncompose.presentation.profile.model.*
 
-/** Browse keeps its owner and scroll state while a profile is open. */
+/**
+ * Coordinates splash and profile selection while Browse keeps its owner and scroll state.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 @Composable
 fun DigimonApp(store: BrowseStore, profileStore: ProfileStore) = FieldGuideTheme {
     val state by store.state.collectAsStateWithLifecycle()

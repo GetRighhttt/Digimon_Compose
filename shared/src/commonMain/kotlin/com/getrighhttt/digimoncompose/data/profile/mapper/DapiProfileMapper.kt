@@ -5,7 +5,12 @@ import com.getrighhttt.digimoncompose.data.profile.model.DapiProfileDto
 import com.getrighhttt.digimoncompose.domain.profile.model.*
 import io.ktor.http.Url
 
-/** Prefer reference-book English; absent English text has an explicit UI fallback. */
+/**
+ * Validates profile identity and maps source metadata into domain values, preferring reference-book English descriptions.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 internal fun DapiProfileDto.toDomain(requestedId: Int): DigimonProfile {
     if (id != requestedId || id <= 0 || name.isBlank()) throw DapiException.InvalidResponse()
     val english = descriptions.filter { it.language.startsWith("en", ignoreCase = true) && it.description.isNotBlank() }

@@ -30,7 +30,12 @@ import coil3.compose.SubcomposeAsyncImage
 import com.getrighhttt.digimoncompose.presentation.browse.model.*
 import com.getrighhttt.digimoncompose.presentation.design.*
 
-/** Browse has one scrolling content area; only its compact app header stays fixed. */
+/**
+ * Browse has one scrolling content area; only its compact app header stays fixed.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 @Composable
 internal fun BrowseScreen(state: BrowseState, gridState: LazyGridState,
     dispatch: (BrowseIntent) -> Unit, onOpen: (DigimonCard) -> Unit) {

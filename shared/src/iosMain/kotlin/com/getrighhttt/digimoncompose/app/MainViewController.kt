@@ -6,7 +6,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.window.ComposeUIViewController
 import platform.UIKit.UIViewController
 
-/** The controller's composition owns the store; closing it cancels Browse work. */
+/**
+ * Hosts shared Compose on iOS and closes both feature stores and their HTTP session when the composition is disposed.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 fun MainViewController(): UIViewController = ComposeUIViewController {
     val scope = rememberCoroutineScope()
     val session = remember { BrowseSession(scope) }

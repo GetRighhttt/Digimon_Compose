@@ -9,6 +9,12 @@ import io.ktor.http.*
 import kotlinx.coroutines.test.runTest
 import kotlin.test.*
 
+/**
+ * Checks profile mapping and failure classification through recorded HTTP responses.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 class DapiProfileRepositoryTest {
     @Test fun profileMapsClassificationSkillsAndPreferredEnglishDescription() = runTest {
         withRepo("""{

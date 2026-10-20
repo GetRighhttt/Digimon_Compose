@@ -9,7 +9,12 @@ import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
 import kotlinx.coroutines.CoroutineScope
 
-/** Platform lifecycle owners close the store and its HTTP client together. */
+/**
+ * Creates both feature stores and their shared HTTP client. The platform owner closes the session to release requests and the engine.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 class BrowseSession(parentScope: CoroutineScope) {
     private val engine = createDapiEngine()
     private val client = HttpClient(engine) {

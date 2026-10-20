@@ -27,7 +27,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-/** Small shared controls keep typography, hit areas, and contrast consistent. */
+/**
+ * Small shared controls keep typography, hit areas, and contrast consistent.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 @Composable
 internal fun GuideText(text: String, size: Int = 16, weight: FontWeight = FontWeight.Normal,
     color: Color = LocalFieldGuideColors.current.text, modifier: Modifier = Modifier,

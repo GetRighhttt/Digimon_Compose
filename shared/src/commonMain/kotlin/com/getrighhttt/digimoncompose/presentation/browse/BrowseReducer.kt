@@ -2,7 +2,12 @@ package com.getrighhttt.digimoncompose.presentation.browse
 
 import com.getrighhttt.digimoncompose.presentation.browse.model.*
 
-/** Pure transitions. Obsolete responses never change the current generation. */
+/**
+ * Pure transitions. Obsolete responses never change the current generation.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 internal fun reduceBrowse(state: BrowseState, event: BrowseEvent): BrowseState = with(state) {
     when (event) {
         is BrowseEvent.BeginReplacement -> copy(

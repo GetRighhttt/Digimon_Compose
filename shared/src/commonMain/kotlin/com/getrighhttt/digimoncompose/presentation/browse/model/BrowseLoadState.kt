@@ -1,5 +1,11 @@
 package com.getrighhttt.digimoncompose.presentation.browse.model
 
+/**
+ * Distinguishes initial loading, debounce, refresh, ready content, and replacement failure.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 sealed interface BrowseLoadState {
     data object Idle : BrowseLoadState
     data object Debouncing : BrowseLoadState

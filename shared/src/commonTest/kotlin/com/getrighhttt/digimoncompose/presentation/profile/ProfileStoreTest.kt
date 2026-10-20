@@ -7,6 +7,12 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.test.*
 import kotlin.test.*
 
+/**
+ * Checks profile request ordering, retry, cancellation, and reducer rejection of obsolete completions.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 @OptIn(ExperimentalCoroutinesApi::class)
 class ProfileStoreTest {
     @Test fun repeatedOpenLoadsOnceAndMapsContent() = runTest {

@@ -3,6 +3,12 @@ package com.getrighhttt.digimoncompose.presentation.browse
 import com.getrighhttt.digimoncompose.presentation.browse.model.*
 import kotlin.test.*
 
+/**
+ * Checks page merging and request-identity rules without scheduling or network access.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 class BrowseReducerTest {
     @Test fun overlappingPagesUpdateValuesWithoutReorderingExistingCards() {
         val state = BrowseState(generation = 3,

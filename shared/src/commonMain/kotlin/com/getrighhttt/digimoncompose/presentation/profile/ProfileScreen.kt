@@ -18,7 +18,12 @@ import com.getrighhttt.digimoncompose.presentation.browse.ArtworkFallback
 import com.getrighhttt.digimoncompose.presentation.design.*
 import com.getrighhttt.digimoncompose.presentation.profile.model.*
 
-/** Profile sections render only metadata supplied by the source. */
+/**
+ * Profile sections render only metadata supplied by the source.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 @Composable
 internal fun ProfileScreen(state: ProfileState, name: String, image: String?, onBack: () -> Unit, onRetry: () -> Unit) {
     val colors = LocalFieldGuideColors.current

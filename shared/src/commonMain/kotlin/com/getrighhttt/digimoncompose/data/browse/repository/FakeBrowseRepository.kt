@@ -5,7 +5,12 @@ import com.getrighhttt.digimoncompose.domain.browse.model.*
 import com.getrighhttt.digimoncompose.domain.browse.repository.BrowseRepository
 import kotlinx.coroutines.delay
 
-/** Deterministic demo catalog. Tests can control latency and request failures. */
+/**
+ * Deterministic demo catalog. Tests can control latency and request failures.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 class FakeBrowseRepository(
     private val latencyMillis: Long = 450,
     private val pageSize: Int = 6,

@@ -8,7 +8,12 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-/** One loop owns profile state. The session closes this child scope with its Browse owner. */
+/**
+ * One loop owns profile state. The session closes this child scope with its Browse owner.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 class ProfileStore(private val repository: ProfileRepository, parentScope: CoroutineScope) {
     private val job = SupervisorJob(parentScope.coroutineContext[Job])
     private val scope = CoroutineScope(parentScope.coroutineContext + job)

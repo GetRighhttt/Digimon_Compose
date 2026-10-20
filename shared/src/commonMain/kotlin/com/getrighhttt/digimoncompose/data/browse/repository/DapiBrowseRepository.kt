@@ -8,7 +8,12 @@ import com.getrighhttt.digimoncompose.domain.browse.model.*
 import com.getrighhttt.digimoncompose.domain.browse.repository.BrowseRepository
 import kotlinx.coroutines.CancellationException
 
-/** Canonical criteria and page size stay attached to every locally constructed request. */
+/**
+ * Canonical criteria and page size stay attached to every locally constructed request.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 internal class DapiBrowseRepository(private val source: DapiSource, private val pageSize: Int = 20) : BrowseRepository {
     init { require(pageSize in 1..100) }
 

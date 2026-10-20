@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.asStateFlow
 /**
  * One loop owns state. Child operations report results with request identities.
  * The host owns this store; close cancels its child scope, never the injected parent.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
  */
 class BrowseStore(private val repository: BrowseRepository, parentScope: CoroutineScope) {
     private val storeJob = SupervisorJob(parentScope.coroutineContext[Job])

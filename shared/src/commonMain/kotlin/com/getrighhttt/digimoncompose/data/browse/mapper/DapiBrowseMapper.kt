@@ -5,7 +5,12 @@ import com.getrighhttt.digimoncompose.domain.browse.model.*
 import io.ktor.http.URLProtocol
 import io.ktor.http.Url
 
-/** Reconstruct requests locally: DAPI sometimes duplicates pageSize inside nextPage. */
+/**
+ * Validates catalog metadata and maps accepted summaries into domain values. Continuations are reconstructed locally because DAPI can duplicate pageSize in its links.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 internal fun DapiPageDto.continuation(
     requestedPage: Int, expectedPath: String, name: String? = null, level: String? = null,
 ): Int? {

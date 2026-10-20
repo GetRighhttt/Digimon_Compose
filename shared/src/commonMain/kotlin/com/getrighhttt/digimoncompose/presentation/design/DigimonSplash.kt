@@ -20,7 +20,12 @@ import com.getrighhttt.digimoncompose.generated.resources.Res
 import com.getrighhttt.digimoncompose.generated.resources.splash_agumon
 import org.jetbrains.compose.resources.painterResource
 
-/** Bundled artwork appears offline. Requests start behind this finite entrance animation. */
+/**
+ * Bundled artwork appears offline. Requests start behind this finite entrance animation.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 @Composable
 internal fun DigimonSplash(onFinished: () -> Unit) {
     val colors = LocalFieldGuideColors.current

@@ -11,7 +11,12 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 
-/** HTTP status is checked before decoding; error bodies can be plain text. */
+/**
+ * HTTP status is checked before decoding; error bodies can be plain text.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 internal class DapiSource(private val client: HttpClient) {
     private val json = Json { ignoreUnknownKeys = true }
 

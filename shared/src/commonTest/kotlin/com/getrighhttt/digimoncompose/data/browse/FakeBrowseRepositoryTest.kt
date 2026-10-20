@@ -5,6 +5,12 @@ import com.getrighhttt.digimoncompose.domain.browse.model.*
 import kotlinx.coroutines.test.runTest
 import kotlin.test.*
 
+/**
+ * Checks combined filtering, pagination, empty results, and configured failures in the local catalog.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 class FakeBrowseRepositoryTest {
     @Test fun combinedFiltersAreAppliedBeforePagination() = runTest {
         val repo = FakeBrowseRepository(latencyMillis = 0, pageSize = 2)

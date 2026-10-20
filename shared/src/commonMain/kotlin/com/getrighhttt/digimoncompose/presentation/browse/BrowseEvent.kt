@@ -2,7 +2,12 @@ package com.getrighhttt.digimoncompose.presentation.browse
 
 import com.getrighhttt.digimoncompose.presentation.browse.model.*
 
-/** Internal operation events share the same serialized loop as UI intents. */
+/**
+ * Internal operation events share the same serialized loop as UI intents.
+ *
+ * @author Stefan Bayne
+ * @since 2026-10-19
+ */
 internal sealed interface BrowseEvent {
     data class BeginReplacement(
         val criteria: BrowseCriteria, val generation: Long, val requestId: Long,
