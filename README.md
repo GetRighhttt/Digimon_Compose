@@ -26,6 +26,36 @@ Captured on a Samsung SM-G990U on October 19, 2026, using live data. The splash 
 
 Browse and Profile each have a serialized MVI store and a pure reducer. Cancellation stops obsolete work; request identities reject late responses. DTOs, domain models, and presentation models are separate. Android and iOS share the screens and feature logic, with platform HTTP engines and lifecycle owners.
 
+## MVI flow
+
+This diagram follows Browse. Profile uses the same pattern with its own store, events, and state. `BrowseIntent` represents actions such as searching, refreshing, or loading another page.
+
+```mermaid
+flowchart TD
+    Screen["BrowseScreen"] -->|User action| Intent["BrowseIntent"]
+    Intent --> Handler
+
+    subgraph Store["BrowseStore"]
+        Handler["Coordinate requests and map results"]
+        Reducer["reduceBrowse: pure state transitions"]
+        State["BrowseState exposed through StateFlow"]
+
+        Handler -->|BrowseEvent: loading, success, or failure| Reducer
+        State -->|Current state| Reducer
+        Reducer -->|Next state| State
+    end
+
+    Handler -->|Request| Repository["BrowseRepository / DapiBrowseRepository"]
+    Repository -->|BrowseResult: domain data or failure| Handler
+    Repository -->|Through DapiSource| API["DAPI"]
+    API -->|HTTP response| Repository
+    State -->|Render| Screen
+```
+
+The repository maps API data into domain models. The store maps domain results into UI values and sends events to the reducer. The reducer returns the next state; the store publishes it through `StateFlow`.
+
+Android's `BrowseViewModel` owns the session and its stores across configuration changes. The iOS controller provides the corresponding ownership. See the [Browse walkthrough](docs/browse-mvi.md) and [architecture notes](docs/architecture.md) for the code and lifecycle details.
+
 ## Run locally
 
 The project configures a Java 25 Gradle daemon through `gradle/gradle-daemon-jvm.properties`. Install Android SDK 37 for Android builds. Android supports API 28+, and iOS supports 16+. The iOS targets are arm64 devices and Apple Silicon simulators.

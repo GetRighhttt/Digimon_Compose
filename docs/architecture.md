@@ -23,15 +23,7 @@ Within common code, packages under `com.getrighhttt.digimoncompose` separate res
 
 ## State flow
 
-```mermaid
-flowchart LR
-    UI[Compose screen] -->|Intent| Store[MVI store]
-    Store -->|Operation| Repo[Domain repository contract]
-    Repo --> Data[Data implementation / DAPI]
-    Data -->|Result| Store
-    Store -->|Event| Reducer[Pure reducer]
-    Reducer -->|StateFlow| UI
-```
+The [README MVI diagram](../README.md#mvi-flow) shows the request/result loop and the store's ownership of state. The reducer returns the next state to the store, which publishes it through `StateFlow`.
 
 A store processes intents and operation events through one channel loop. Its coroutine jobs perform I/O and scheduling. The reducer receives an event and previous state, then returns the next state. Composables render state and dispatch intents; they do not call repositories.
 
