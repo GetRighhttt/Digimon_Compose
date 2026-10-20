@@ -13,4 +13,5 @@ internal enum class GuideIconKind {
     Forward,
     Close,
     Grid,
+    List,
 }

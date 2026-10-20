@@ -32,6 +32,7 @@ fun DigimonApp(
     val state by store.state.collectAsStateWithLifecycle()
     val profileState by profileStore.state.collectAsStateWithLifecycle()
     val gridState = rememberLazyGridState()
+    var compactCatalog by rememberSaveable { mutableStateOf(false) }
     var showSplash by rememberSaveable { mutableStateOf(true) }
     var selectedId by rememberSaveable { mutableStateOf<Int?>(null) }
     var selectedName by rememberSaveable { mutableStateOf("") }
@@ -46,7 +47,13 @@ fun DigimonApp(
     if (showSplash) {
         DigimonSplash { showSplash = false }
     } else if (selectedId == null) {
-        BrowseScreen(state, gridState, store::dispatch) {
+        BrowseScreen(
+            state,
+            gridState,
+            store::dispatch,
+            compactCatalog,
+            { compactCatalog = !compactCatalog },
+        ) {
             selectedId = it.id
             selectedName = it.name
             selectedImage = it.image

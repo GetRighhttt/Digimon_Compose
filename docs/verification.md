@@ -1,6 +1,6 @@
 # Verification record
 
-Last implementation checks: October 19, 2026. The code cleanup passed the formatting check, all 50 common tests, the Android debug build, shared iOS compilation, and the complete unsigned iOS host build. Catalog and profile rendering were checked again on the Samsung.
+Last implementation checks: October 19, 2026. The UI update passed the formatting check, all 50 common tests, the Android debug build, shared iOS compilation, and the complete unsigned iOS host build. Grid, compact list, and profile rendering were checked on the Samsung in light appearance, with an additional dark grid/profile pass.
 
 ## Automated checks
 
@@ -35,7 +35,17 @@ A separate temporary live-client smoke test loaded the catalog, combined name/st
 
 ## Device checks
 
-The current Android build was installed on a physical Samsung SM-G990U. Light-theme catalog artwork, 20 loaded entries, compact controls, system bars, the Agumon splash, and Agumon's profile were visually inspected. The README gallery contains actual device screenshots.
+The current Android build was installed on a physical Samsung SM-G990U. The following checks passed:
+
+- Open the initial 20-entry catalog, switch to the compact list, and open Agumon.
+- Return from the profile and confirm the compact layout remains selected.
+- Search for Agumon, combine it with the Adult stage, and confirm the empty state.
+- Reset the stage, clear the query, and refresh the 20-entry catalog.
+- Switch back to the artwork grid and inspect it in light and dark appearance.
+- Inspect Agumon's cover, classification, and quick facts in both appearances.
+- Inspect the catalog at 1.3× system font size, then restore the original font size and light appearance.
+
+The README gallery contains actual device screenshots. The existing Agumon splash capture comes from the earlier launch-animation check; this pass did not change the splash.
 
 An initial catalog request once displayed retry while stage options loaded. Subsequent cold launches loaded the catalog. The cause was not established; the UI exposes the failure rather than treating it as empty results.
 
@@ -43,8 +53,8 @@ The earlier fake-data milestone ran on an Android API 36 emulator and an iPhone 
 
 ## Limits and screenshot history
 
-Current iOS rendering/interactions, dark appearance, accessibility, large text, and complete process restoration have not had a full device pass. Host tests are not instrumented UI tests. iOS compilation/linking confirms build integration, not interactive behavior.
+Current iOS rendering/interactions, screen-reader behavior, the full range of text sizes, and complete process restoration have not had a full device pass. The larger-text check covered the catalog at 1.3×, not every screen or accessibility setting. Host tests are not instrumented UI tests. iOS compilation/linking confirms build integration, not interactive behavior.
 
-Current images: [splash](screenshots/splash-samsung-animation.png), [catalog](screenshots/browse-samsung-catalog.png), and [Agumon profile](screenshots/profile-samsung-agumon.png).
+Current images: [splash](screenshots/splash-samsung-animation.png), [catalog](screenshots/browse-samsung-catalog.png), [compact list](screenshots/browse-samsung-list.png), [Agumon profile](screenshots/profile-samsung-agumon.png), [dark catalog](screenshots/browse-samsung-dark.png), and [dark profile](screenshots/profile-samsung-dark.png).
 
 Historical images: [first fake Android UI](screenshots/browse-android.png), [first fake iOS UI](screenshots/browse-ios.png), and [earlier live Samsung layout](screenshots/browse-samsung-live.png). These are records of earlier milestones and do not show the current design.

@@ -24,6 +24,8 @@ internal val LocalFieldGuideColors =
             tint = Color(0xFFDDEEE6),
             border = Color(0xFFE0E7E1),
             error = Color(0xFFA12D39),
+            cover = Color(0xFF123F36),
+            onCover = Color(0xFFF0F8F2),
         )
     }
 
@@ -41,6 +43,8 @@ internal fun FieldGuideTheme(content: @Composable () -> Unit) {
                 tint = Color(0xFF29483D),
                 border = Color(0xFF354A43),
                 error = Color(0xFFFFB4B9),
+                cover = Color(0xFF204C40),
+                onCover = Color(0xFFF0F8F2),
             )
         } else {
             LocalFieldGuideColors.current

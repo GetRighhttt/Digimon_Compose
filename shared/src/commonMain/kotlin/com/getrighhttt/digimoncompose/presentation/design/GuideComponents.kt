@@ -124,6 +124,14 @@ internal fun GuideIcon(
                 line(Offset(width * 0.75f, height * 0.25f), Offset(width * 0.25f, height * 0.75f))
             }
 
+            GuideIconKind.List -> {
+                for (row in 0..2) {
+                    val y = height * (0.22f + row * 0.28f)
+                    drawCircle(color, stroke, Offset(width * 0.17f, y))
+                    line(Offset(width * 0.38f, y), Offset(width * 0.85f, y))
+                }
+            }
+
             GuideIconKind.Grid -> {
                 for (x in 0..1) {
                     for (y in 0..1) {
@@ -150,9 +158,9 @@ internal fun GuideIconButton(
     Box(
         Modifier
             .size(48.dp)
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(12.dp))
             .background(colors.surface)
-            .border(1.dp, colors.border, RoundedCornerShape(16.dp))
+            .border(1.dp, colors.border, RoundedCornerShape(12.dp))
             .clickable(role = Role.Button, onClick = onClick)
             .semantics { contentDescription = label },
         contentAlignment = Alignment.Center,
@@ -171,7 +179,7 @@ internal fun GuideButton(
     Box(
         modifier
             .defaultMinSize(minHeight = 48.dp)
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(12.dp))
             .background(colors.accent)
             .clickable(role = Role.Button, onClick = onClick)
             .padding(horizontal = 20.dp, vertical = 12.dp),
@@ -191,11 +199,10 @@ internal fun GuideChip(
     Box(
         Modifier
             .defaultMinSize(minHeight = 48.dp)
-            .clip(RoundedCornerShape(16.dp))
-            .background(if (selected) colors.accent else colors.surface)
-            .border(1.dp, if (selected) colors.accent else colors.border, RoundedCornerShape(16.dp))
             .selectable(selected, role = Role.RadioButton, onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 12.dp),
+            .padding(vertical = 5.dp)
+            .background(if (selected) colors.accent else colors.tint, RoundedCornerShape(50))
+            .padding(horizontal = 16.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center,
     ) {
         GuideText(

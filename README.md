@@ -9,19 +9,31 @@ A Digimon field guide built with Compose Multiplatform for Android and iOS. This
   <tr>
     <td><img src="docs/screenshots/splash-samsung-animation.png" width="240" alt="Agumon splash with a teal ring and Digimon label"></td>
     <td><img src="docs/screenshots/browse-samsung-catalog.png" width="240" alt="Light catalog with search, stage filters, and two columns of Digimon artwork"></td>
-    <td><img src="docs/screenshots/profile-samsung-agumon.png" width="240" alt="Agumon profile with artwork, classification tags, and English description"></td>
+    <td><img src="docs/screenshots/profile-samsung-agumon.png" width="240" alt="Agumon field-guide cover with source stage, classification, and quick facts"></td>
   </tr>
 </table>
 
-Captured on a Samsung SM-G990U on October 19, 2026, using live data. The splash image is a frame from its entrance animation. System dark appearance is also implemented; these captures show the light theme.
+Captured on a Samsung SM-G990U on October 19, 2026, using live data. The splash image is a frame from its entrance animation. The main gallery shows light appearance; the additional views below include dark appearance.
+
+<details>
+  <summary>Compact list and dark appearance</summary>
+  <table>
+    <tr><th>Compact list</th><th>Dark catalog</th><th>Dark profile</th></tr>
+    <tr>
+      <td><img src="docs/screenshots/browse-samsung-list.png" width="240" alt="Compact Digimon list with thumbnails and source identifiers"></td>
+      <td><img src="docs/screenshots/browse-samsung-dark.png" width="240" alt="Dark catalog with mint controls and numbered artwork cards"></td>
+      <td><img src="docs/screenshots/profile-samsung-dark.png" width="240" alt="Agumon profile in dark appearance with a teal cover and quick facts"></td>
+    </tr>
+  </table>
+</details>
 
 ## What works
 
-- Browse live Digimon artwork in an adaptive grid.
+- Browse live Digimon artwork in an adaptive grid or switch to a compact list.
 - Search by name with a 300 ms debounce, filter by stage, refresh, and load more pages.
 - Handle empty results, request failures, and retries separately.
 - Open profiles with classification, English descriptions, debut information, X-Antibody status, expandable skills, and evolution relationship counts when available.
-- Return from a profile with the query, loaded catalog, and scroll position kept.
+- Return from a profile with the query, loaded catalog, layout choice, and scroll position kept.
 - Show bundled Agumon artwork at launch while initial requests begin.
 
 Browse and Profile each have a serialized MVI store and a pure reducer. Cancellation stops obsolete work; request identities reject late responses. DTOs, domain models, and presentation models are separate. Android and iOS share the screens and feature logic, with platform HTTP engines and lifecycle owners.

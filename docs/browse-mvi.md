@@ -28,7 +28,7 @@ An append failure retains accepted cards and the continuation for explicit retry
 
 Android's `BrowseViewModel` owns the store across configuration changes. The iOS controller creates the store with its composition scope and closes it when disposed. The store creates its own child job, so closing it never cancels the injected parent scope. Tests supply a test scope.
 
-The shared root keeps the Browse store and saveable grid state alive when showing a profile. Selection itself is saveable UI state, outside the Browse reducer. Android handles system back; iOS currently has the visible back action. Profiles load through their own store; see [Profile MVI](profile-mvi.md). Interactive iOS back gestures and full navigation-entry ownership remain future work.
+The shared root keeps the Browse store and saveable grid state alive when showing a profile. Selection and the grid/list choice are saveable UI state in the shared root, outside the Browse reducer. The layout choice changes only rendering; it does not dispatch a request or replace catalog data. Android handles system back; iOS currently has the visible back action. Profiles load through their own store; see [Profile MVI](profile-mvi.md). Interactive iOS back gestures and full navigation-entry ownership remain future work.
 
 Transient effects are unnecessary for this milestone. Loading, errors, and retry progress are persistent state. Future one-time effects must specify what happens when collection stops.
 

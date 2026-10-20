@@ -2,19 +2,16 @@ package com.getrighhttt.digimoncompose.presentation.browse
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -23,6 +20,7 @@ import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -31,10 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
@@ -42,7 +37,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil3.compose.SubcomposeAsyncImage
 import com.getrighhttt.digimoncompose.presentation.browse.model.AppendState
 import com.getrighhttt.digimoncompose.presentation.browse.model.BrowseError
 import com.getrighhttt.digimoncompose.presentation.browse.model.BrowseIntent
@@ -50,9 +44,9 @@ import com.getrighhttt.digimoncompose.presentation.browse.model.BrowseLoadState
 import com.getrighhttt.digimoncompose.presentation.browse.model.BrowseState
 import com.getrighhttt.digimoncompose.presentation.browse.model.DigimonCard
 import com.getrighhttt.digimoncompose.presentation.browse.model.LevelOptionsState
-import com.getrighhttt.digimoncompose.presentation.design.ArtworkFallback
 import com.getrighhttt.digimoncompose.presentation.design.GuideButton
 import com.getrighhttt.digimoncompose.presentation.design.GuideChip
+import com.getrighhttt.digimoncompose.presentation.design.GuideEmblem
 import com.getrighhttt.digimoncompose.presentation.design.GuideIcon
 import com.getrighhttt.digimoncompose.presentation.design.GuideIconButton
 import com.getrighhttt.digimoncompose.presentation.design.GuideIconKind
@@ -71,6 +65,8 @@ internal fun BrowseScreen(
     state: BrowseState,
     gridState: LazyGridState,
     dispatch: (BrowseIntent) -> Unit,
+    compact: Boolean,
+    onToggleLayout: () -> Unit,
     onOpen: (DigimonCard) -> Unit,
 ) {
     val colors = LocalFieldGuideColors.current
@@ -80,30 +76,52 @@ internal fun BrowseScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
+            GuideEmblem()
             GuideText(
                 "Digimon",
-                size = 26,
+                size = 22,
                 weight = FontWeight.Bold,
                 modifier = Modifier.weight(1f),
             )
-            GuideText("${state.items.size} loaded", size = 12, color = colors.secondary)
+            GuideText("FIELD GUIDE", size = 10, weight = FontWeight.Bold, color = colors.secondary)
             GuideIconButton(GuideIconKind.Refresh, "Refresh catalog") {
                 dispatch(BrowseIntent.Refresh)
             }
         }
         LazyVerticalGrid(
-            columns = GridCells.Adaptive(144.dp),
+            columns = GridCells.Adaptive(152.dp),
             state = gridState,
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 28.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp),
-            horizontalArrangement = Arrangement.spacedBy(14.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             item(key = "intro", span = { GridItemSpan(maxLineSpan) }) {
                 SearchField(state.criteria.query) { dispatch(BrowseIntent.QueryChanged(it)) }
             }
             item(key = "filters", span = { GridItemSpan(maxLineSpan) }) {
                 BrowseFilters(state.criteria.level, state.levels, dispatch)
+            }
+
+            item(key = "directory", span = { GridItemSpan(maxLineSpan) }) {
+                Row(
+                    Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    GuideText("Directory", size = 20, weight = FontWeight.SemiBold)
+                    GuideText(
+                        "${state.items.size} loaded",
+                        size = 12,
+                        color = colors.secondary,
+                        modifier = Modifier.weight(1f),
+                    )
+                    GuideIconButton(
+                        if (compact) GuideIconKind.Grid else GuideIconKind.List,
+                        if (compact) "Show artwork grid" else "Show compact list",
+                        onToggleLayout,
+                    )
+                }
             }
 
             when (val load = state.load) {
@@ -158,8 +176,12 @@ internal fun BrowseScreen(
                     }
                 }
             }
-            items(state.items, key = { "digimon-${it.id}" }) { card ->
-                DigimonCardView(card) { onOpen(card) }
+            items(
+                state.items,
+                key = { "digimon-${it.id}" },
+                span = { GridItemSpan(if (compact) maxLineSpan else 1) },
+            ) { card ->
+                DigimonEntry(card, compact) { onOpen(card) }
             }
             item(key = "pagination", span = { GridItemSpan(maxLineSpan) }) {
                 BrowsePagination(state, dispatch)
@@ -176,7 +198,10 @@ private fun BrowseFilters(
 ) {
     val colors = LocalFieldGuideColors.current
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        LazyRow(
+            modifier = Modifier.selectableGroup(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
             item {
                 GuideChip("All stages", selectedLevel == null) {
                     dispatch(BrowseIntent.LevelChanged(null))
@@ -255,9 +280,9 @@ private fun SearchField(
     Row(
         Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
+            .clip(RoundedCornerShape(14.dp))
             .background(colors.surface)
-            .border(1.dp, colors.border, RoundedCornerShape(18.dp))
+            .border(1.dp, colors.border, RoundedCornerShape(14.dp))
             .padding(start = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -268,7 +293,7 @@ private fun SearchField(
             onChange,
             singleLine = true,
             modifier =
-                Modifier.weight(1f).padding(vertical = 18.dp).semantics {
+                Modifier.weight(1f).padding(vertical = 16.dp).semantics {
                     contentDescription = "Search Digimon by name"
                 },
             textStyle = TextStyle(color = colors.text, fontSize = 16.sp),
@@ -285,61 +310,6 @@ private fun SearchField(
             GuideIconButton(GuideIconKind.Close, "Clear search") { onChange("") }
         } else {
             Spacer(Modifier.width(16.dp))
-        }
-    }
-}
-
-@Composable
-private fun DigimonCardView(
-    card: DigimonCard,
-    onClick: () -> Unit,
-) {
-    val colors = LocalFieldGuideColors.current
-    Column(
-        Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(22.dp))
-            .background(colors.surface)
-            .border(1.dp, colors.border, RoundedCornerShape(22.dp))
-            .clickable(role = Role.Button, onClickLabel = "Open ${card.name}", onClick = onClick),
-    ) {
-        Box(Modifier.fillMaxWidth().aspectRatio(1.08f).background(Color.White)) {
-            SubcomposeAsyncImage(
-                card.image,
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier.fillMaxSize().padding(18.dp),
-                loading = { ArtworkFallback(card.name) },
-                error = { ArtworkFallback(card.name) },
-            )
-            Box(
-                Modifier
-                    .padding(10.dp)
-                    .background(Color(0xFFF0F4F0), RoundedCornerShape(7.dp))
-                    .padding(horizontal = 7.dp, vertical = 4.dp),
-            ) {
-                GuideText(
-                    "#${card.id.toString().padStart(4, '0')}",
-                    size = 10,
-                    color = Color(0xFF596C67),
-                    weight = FontWeight.Medium,
-                )
-            }
-        }
-        Row(
-            Modifier.fillMaxWidth().padding(14.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
-        ) {
-            GuideText(
-                card.name,
-                size = 15,
-                weight = FontWeight.SemiBold,
-                modifier = Modifier.weight(1f),
-                minLines = 2,
-                maxLines = 2,
-            )
-            GuideIcon(GuideIconKind.Forward, Modifier.size(18.dp))
         }
     }
 }

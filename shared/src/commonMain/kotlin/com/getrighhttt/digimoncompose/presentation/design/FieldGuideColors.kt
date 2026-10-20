@@ -18,4 +18,7 @@ internal data class FieldGuideColors(
     val tint: Color,
     val border: Color,
     val error: Color,
+
+    val cover: Color,
+    val onCover: Color,
 )

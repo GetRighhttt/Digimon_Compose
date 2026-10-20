@@ -8,13 +8,10 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -24,13 +21,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import coil3.compose.SubcomposeAsyncImage
-import com.getrighhttt.digimoncompose.presentation.design.ArtworkFallback
 import com.getrighhttt.digimoncompose.presentation.design.GuideButton
 import com.getrighhttt.digimoncompose.presentation.design.GuideIconButton
 import com.getrighhttt.digimoncompose.presentation.design.GuideIconKind
@@ -64,29 +56,26 @@ internal fun ProfileScreen(
 
         LazyColumn(
             modifier = Modifier.fillMaxWidth().weight(1f),
-            contentPadding = PaddingValues(20.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp),
+            contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 8.dp, bottom = 32.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp),
         ) {
             item {
-                ProfileArtwork(
+                ProfileCover(
                     name = content?.name ?: name,
                     image = content?.image ?: image,
-                    fallbackName = name,
+                    levels = content?.levels.orEmpty(),
                 )
             }
-            item {
-                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    GuideText(content?.name ?: name, size = 32, weight = FontWeight.Bold)
-                    if (content != null) {
-                        FlowRow(
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            val tags =
-                                (content.levels + content.attributes + content.types)
-                                    .distinct()
-                            tags.forEach { GuideTag(it) }
-                        }
+            val classifications =
+                (content?.attributes.orEmpty() + content?.types.orEmpty())
+                    .distinct()
+            if (classifications.isNotEmpty()) {
+                item {
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        classifications.forEach { GuideTag(it) }
                     }
                 }
             }
@@ -104,8 +93,9 @@ internal fun ProfileScreen(
             }
 
             if (content != null) {
+                item { ProfileFacts(content) }
                 item {
-                    ProfileSection("About ${content.name}") {
+                    ProfileSection("Overview") {
                         GuideText(
                             content.description ?: MISSING_DESCRIPTION,
                             size = 15,
@@ -113,8 +103,6 @@ internal fun ProfileScreen(
                         )
                     }
                 }
-                item { ProfileFacts(content) }
-
                 if (content.skills.isNotEmpty()) {
                     item { ProfileSkills(content) }
                 }
@@ -139,40 +127,13 @@ private fun ProfileHeader(
     ) {
         GuideIconButton(GuideIconKind.Back, "Back to directory", onBack)
         GuideText(
-            "FIELD NOTES",
-            size = 11,
+            "Field notes",
+            size = 18,
             weight = FontWeight.Bold,
-            color = colors.secondary,
+            color = colors.text,
             modifier = Modifier.weight(1f),
         )
         id?.let { GuideTag("#${it.toString().padStart(4, '0')}") }
-    }
-}
-
-@Composable
-private fun ProfileArtwork(
-    name: String,
-    image: String?,
-    fallbackName: String,
-) {
-    Box(
-        modifier =
-            Modifier
-                .fillMaxWidth()
-                .heightIn(min = 220.dp, max = 320.dp)
-                .aspectRatio(1.3f)
-                .clip(RoundedCornerShape(28.dp))
-                .background(Color.White),
-        contentAlignment = Alignment.Center,
-    ) {
-        SubcomposeAsyncImage(
-            model = image,
-            contentDescription = "Artwork of $name",
-            contentScale = ContentScale.Fit,
-            modifier = Modifier.fillMaxSize().padding(24.dp),
-            loading = { ArtworkFallback(fallbackName) },
-            error = { ArtworkFallback(fallbackName) },
-        )
     }
 }
 
@@ -245,11 +206,13 @@ private fun ProfileSection(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .background(colors.surface, RoundedCornerShape(24.dp))
-                .padding(20.dp),
+                .padding(top = 4.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        GuideText(title, size = 18, weight = FontWeight.SemiBold)
+        GuideText(title, size = 18, weight = FontWeight.Bold)
+        Box(
+            Modifier.fillMaxWidth().background(colors.border).padding(top = 1.dp),
+        )
         content()
     }
 }
@@ -262,7 +225,7 @@ private fun StatPanel(
 ) {
     val colors = LocalFieldGuideColors.current
     Column(
-        modifier = modifier.background(colors.tint, RoundedCornerShape(20.dp)).padding(16.dp),
+        modifier = modifier.background(colors.surface, RoundedCornerShape(16.dp)).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         GuideText(label, size = 10, weight = FontWeight.Bold, color = colors.secondary)
