@@ -4,25 +4,33 @@ A Digimon field guide built with Compose Multiplatform for Android and iOS. This
 
 ## Screenshots
 
+The iPhone 17 Pro captures below show the current text sizes and spacing in dark appearance, using live data on October 19, 2026.
+
 <table>
-  <tr><th>Agumon splash</th><th>Catalog</th><th>Profile</th></tr>
+  <tr><th>iPhone catalog</th><th>iPhone profile</th></tr>
   <tr>
-    <td><img src="docs/screenshots/splash-samsung-animation.png" width="240" alt="Agumon splash with a teal ring and Digimon label"></td>
-    <td><img src="docs/screenshots/browse-samsung-catalog.png" width="240" alt="Light catalog with search, stage filters, and two columns of Digimon artwork"></td>
-    <td><img src="docs/screenshots/profile-samsung-agumon.png" width="240" alt="Agumon field-guide cover with source stage, classification, and quick facts"></td>
+    <td><img src="docs/screenshots/browse-iphone-catalog.png" width="280" alt="Dark iPhone catalog with search, stage filters, and numbered Digimon artwork cards"></td>
+    <td><img src="docs/screenshots/profile-iphone-airdramon.png" width="280" alt="Airdramon profile on iPhone with a teal cover, classification tags, and quick facts"></td>
   </tr>
 </table>
 
-Captured on a Samsung SM-G990U on October 19, 2026, using live data. The splash image is a frame from its entrance animation. The main gallery shows light appearance; the additional views below include dark appearance.
-
 <details>
-  <summary>Compact list and dark appearance</summary>
+  <summary>Earlier Samsung screenshots: splash, light appearance, and compact list</summary>
+
+Captured on a Samsung SM-G990U on October 19, 2026, before the latest text-size and spacing adjustment. The splash image is a frame from its entrance animation.
+
   <table>
+    <tr><th>Agumon splash</th><th>Light catalog</th><th>Light profile</th></tr>
+    <tr>
+      <td><img src="docs/screenshots/splash-samsung-animation.png" width="240" alt="Agumon splash with a teal ring and Digimon label"></td>
+      <td><img src="docs/screenshots/browse-samsung-catalog.png" width="240" alt="Earlier light catalog with search, stage filters, and two columns of Digimon artwork"></td>
+      <td><img src="docs/screenshots/profile-samsung-agumon.png" width="240" alt="Earlier Agumon profile with artwork, source stage, classification, and quick facts"></td>
+    </tr>
     <tr><th>Compact list</th><th>Dark catalog</th><th>Dark profile</th></tr>
     <tr>
-      <td><img src="docs/screenshots/browse-samsung-list.png" width="240" alt="Compact Digimon list with thumbnails and source identifiers"></td>
-      <td><img src="docs/screenshots/browse-samsung-dark.png" width="240" alt="Dark catalog with mint controls and numbered artwork cards"></td>
-      <td><img src="docs/screenshots/profile-samsung-dark.png" width="240" alt="Agumon profile in dark appearance with a teal cover and quick facts"></td>
+      <td><img src="docs/screenshots/browse-samsung-list.png" width="240" alt="Earlier compact Digimon list with thumbnails and source identifiers"></td>
+      <td><img src="docs/screenshots/browse-samsung-dark.png" width="240" alt="Earlier dark catalog with mint controls and numbered artwork cards"></td>
+      <td><img src="docs/screenshots/profile-samsung-dark.png" width="240" alt="Earlier Agumon profile in dark appearance with a teal cover and quick facts"></td>
     </tr>
   </table>
 </details>

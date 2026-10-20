@@ -59,6 +59,8 @@ The earlier fake-data milestone ran on an Android API 36 emulator and an iPhone 
 
 The complete set of iOS interactions, iOS light appearance, screen-reader behavior, the full range of text sizes, and complete process restoration have not had a full device pass. The larger-text check covered the catalog at 1.3×, not every screen or accessibility setting. Host tests are not instrumented UI tests. iOS compilation/linking confirms build integration, not interactive behavior.
 
-Current images: [splash](screenshots/splash-samsung-animation.png), [catalog](screenshots/browse-samsung-catalog.png), [compact list](screenshots/browse-samsung-list.png), [Agumon profile](screenshots/profile-samsung-agumon.png), [dark catalog](screenshots/browse-samsung-dark.png), and [dark profile](screenshots/profile-samsung-dark.png).
+Current iPhone captures after the text and spacing adjustment: [catalog](screenshots/browse-iphone-catalog.png) and [Airdramon profile](screenshots/profile-iphone-airdramon.png). These are unedited physical-device screenshots in dark appearance.
+
+Earlier Samsung captures: [splash](screenshots/splash-samsung-animation.png), [catalog](screenshots/browse-samsung-catalog.png), [compact list](screenshots/browse-samsung-list.png), [Agumon profile](screenshots/profile-samsung-agumon.png), [dark catalog](screenshots/browse-samsung-dark.png), and [dark profile](screenshots/profile-samsung-dark.png).
 
 Historical images: [first fake Android UI](screenshots/browse-android.png), [first fake iOS UI](screenshots/browse-ios.png), and [earlier live Samsung layout](screenshots/browse-samsung-live.png). These are records of earlier milestones and do not show the current design.
