@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.mvilab
 
 /**
- * Describes the visible phases of a sample field report request.
+ * Gives both demos the same screen states. Failure stays in state so retry remains visible.
  *
  * @author Stefan Bayne
  * @since 2026-11-18

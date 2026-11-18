@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.data.browse.model
 
 /**
- * Data-layer failures carry no server body into presentation.
+ * Classifies request failures before repositories map them to domain errors.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

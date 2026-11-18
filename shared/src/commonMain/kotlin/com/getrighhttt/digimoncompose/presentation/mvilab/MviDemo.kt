@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.mvilab
 
 /**
- * Identifies the two Field Report destinations.
+ * Selects which framework runs the Field report screen.
  *
  * @author Stefan Bayne
  * @since 2026-11-18

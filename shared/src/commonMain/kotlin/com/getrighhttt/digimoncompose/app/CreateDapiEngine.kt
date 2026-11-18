@@ -3,7 +3,7 @@ package com.getrighhttt.digimoncompose.app
 import io.ktor.client.engine.HttpClientEngine
 
 /**
- * Defines the platform HTTP-engine factory used by the shared session.
+ * Each platform supplies the HTTP engine for the shared client.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

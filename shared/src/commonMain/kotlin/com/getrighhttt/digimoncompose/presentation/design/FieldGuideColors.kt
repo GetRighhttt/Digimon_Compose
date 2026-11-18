@@ -3,7 +3,7 @@ package com.getrighhttt.digimoncompose.presentation.design
 import androidx.compose.ui.graphics.Color
 
 /**
- * Defines semantic color roles shared by the light and dark field-guide UI.
+ * Names colors by their use so the same screens can use either theme.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

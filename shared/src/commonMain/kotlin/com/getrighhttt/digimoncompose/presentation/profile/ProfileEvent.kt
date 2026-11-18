@@ -4,8 +4,7 @@ import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileContent
 import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileError
 
 /**
- * Carries operation results and request identities through the same loop as profile
- * intents.
+ * Carries load results to the reducer. Profile and request IDs identify the attempt.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.browse.model
 
 /**
- * Defines user and lifecycle actions accepted by the serialized Browse store.
+ * Describes what the UI asks the catalog to do, such as changing a filter or retrying.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

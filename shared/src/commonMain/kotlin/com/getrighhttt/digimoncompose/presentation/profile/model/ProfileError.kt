@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.profile.model
 
 /**
- * Identifies profile failures for UI message mapping without exposing transport errors.
+ * Lets the profile choose an error message without reading a transport exception.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

@@ -15,7 +15,7 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 
 /**
- * HTTP status is checked before decoding; error bodies can be plain text.
+ * Checks HTTP status before decoding because an error response may be plain text.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

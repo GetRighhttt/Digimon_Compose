@@ -3,8 +3,7 @@ package com.getrighhttt.digimoncompose.app
 import androidx.compose.runtime.Composable
 
 /**
- * Defines platform back handling for the shared selection shell. iOS uses its visible
- * back action.
+ * Lets the app handle Android system back. Both platforms have a visible back button.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

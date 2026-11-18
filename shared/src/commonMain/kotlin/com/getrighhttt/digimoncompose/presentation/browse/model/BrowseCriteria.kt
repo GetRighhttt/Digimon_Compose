@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.browse.model
 
 /**
- * Keeps user-entered search text and the selected stage together in presentation state.
+ * Keeps search text as entered and records the selected stage. Requests normalize the text.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

@@ -22,7 +22,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 /**
- * Serializes Browse actions and results. Closing cancels only the store's child scope.
+ * Handles UI intents and request results in one loop. Request jobs send results back
+ * to the loop so only the store writes to StateFlow.
  *
  * @author Stefan Bayne
  * @since 2026-10-19
@@ -77,6 +78,7 @@ class BrowseStore(
                 if (!started) {
                     started = true
                     loadLevels()
+                    // A search may have already started before the UI sent Started.
                     if (current.load == BrowseLoadState.Idle) replace(current.criteria)
                 }
             }
@@ -131,6 +133,7 @@ class BrowseStore(
     ) {
         replacementJob?.cancel()
         appendJob?.cancel()
+        // A new first page makes any older next-page result stale, even on refresh.
         val generation = state.value.generation + 1
         val requestId = ++nextRequestId
         apply(BrowseEvent.BeginReplacement(criteria, generation, requestId, debounce, keepItems))

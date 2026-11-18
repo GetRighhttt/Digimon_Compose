@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.data.browse.model
 
 /**
- * Local demo fixtures include level metadata used only for filtering.
+ * Keeps stage data for fake catalog filtering, even though catalog cards do not show it.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

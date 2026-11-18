@@ -15,7 +15,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import pro.respawn.flowmvi.dsl.collect
 
 /**
- * Connects each framework to the same report screen for its route lifetime.
+ * Starts the selected framework and gives the same screen its state and callbacks.
+ * Leaving the screen cancels its coroutine scope.
  *
  * @author Stefan Bayne
  * @since 2026-11-18
@@ -34,6 +35,7 @@ internal fun FieldReportDemo(
                 onDispose { lifecycle.close() }
             }
             var state by remember { mutableStateOf<ReportState>(ReportState.Ready) }
+            // Stop collecting in the background without closing the store.
             val lifecycle = LocalLifecycleOwner.current.lifecycle
             LaunchedEffect(store, lifecycle) {
                 lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {

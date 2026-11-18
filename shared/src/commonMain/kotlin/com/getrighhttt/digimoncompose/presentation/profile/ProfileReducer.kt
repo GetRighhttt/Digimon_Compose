@@ -3,7 +3,8 @@ package com.getrighhttt.digimoncompose.presentation.profile
 import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileState
 
 /**
- * Closing or replacing a profile invalidates any earlier completion.
+ * Returns the next profile state. A result applies only if its profile and request IDs
+ * still match, even when the user reopens the same profile.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

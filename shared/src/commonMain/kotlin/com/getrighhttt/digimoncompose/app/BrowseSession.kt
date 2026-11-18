@@ -10,7 +10,7 @@ import io.ktor.client.plugins.HttpTimeout
 import kotlinx.coroutines.CoroutineScope
 
 /**
- * Owns both feature stores and their HTTP client until the platform closes the session.
+ * Keeps both stores and their shared HTTP client open for the platform host.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

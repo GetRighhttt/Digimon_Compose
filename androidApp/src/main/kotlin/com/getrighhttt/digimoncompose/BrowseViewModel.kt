@@ -5,8 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.getrighhttt.digimoncompose.app.BrowseSession
 
 /**
- * Owns both shared feature stores and their HTTP session across Android configuration
- * changes.
+ * Keeps the catalog and profile stores alive when Android recreates the activity.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

@@ -1,8 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.profile.model
 
 /**
- * Tracks the selected profile, active request, accepted content, and any loading
- * failure.
+ * Holds the visible profile and the ID of the load whose result it can accept.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

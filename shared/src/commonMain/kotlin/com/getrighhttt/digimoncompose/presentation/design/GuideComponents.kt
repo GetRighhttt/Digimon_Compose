@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 /**
- * Small shared controls keep typography, hit areas, and contrast consistent.
+ * Shares text and controls so screens use the same type sizes, tap areas, and colors.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

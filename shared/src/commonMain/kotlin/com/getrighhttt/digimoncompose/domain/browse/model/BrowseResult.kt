@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.domain.browse.model
 
 /**
- * Failures are typed so presentation never depends on exception text.
+ * Returns catalog data or a typed failure so the UI does not need exception text.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

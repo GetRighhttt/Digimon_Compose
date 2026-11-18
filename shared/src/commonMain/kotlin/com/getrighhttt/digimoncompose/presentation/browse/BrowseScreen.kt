@@ -56,7 +56,8 @@ import com.getrighhttt.digimoncompose.presentation.design.LocalFieldGuideColors
 import com.getrighhttt.digimoncompose.presentation.mvilab.MviDemo
 
 /**
- * Browse has one scrolling content area; only its compact app header stays fixed.
+ * Shows catalog state and sends user actions to the caller. The header stays visible
+ * while the catalog scrolls.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

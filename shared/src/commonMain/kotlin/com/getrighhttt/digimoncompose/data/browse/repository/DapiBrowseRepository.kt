@@ -13,7 +13,7 @@ import com.getrighhttt.digimoncompose.domain.browse.repository.BrowseRepository
 import kotlinx.coroutines.CancellationException
 
 /**
- * Canonical criteria and page size stay attached to every locally constructed request.
+ * Builds catalog requests from the selected filters, page number, and page size.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

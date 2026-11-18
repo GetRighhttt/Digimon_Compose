@@ -3,8 +3,7 @@ package com.getrighhttt.digimoncompose.data.profile.model
 import kotlinx.serialization.Serializable
 
 /**
- * Decodes a related Digimon identity and name for counting distinct evolution
- * relationships.
+ * Holds a related Digimon's ID so the mapper can count distinct evolution links.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

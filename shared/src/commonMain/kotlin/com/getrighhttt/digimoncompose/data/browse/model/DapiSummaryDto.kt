@@ -3,7 +3,7 @@ package com.getrighhttt.digimoncompose.data.browse.model
 import kotlinx.serialization.Serializable
 
 /**
- * Decodes the identity, name, and optional artwork reference used by catalog summaries.
+ * Matches the catalog response: ID, name, and optional artwork.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

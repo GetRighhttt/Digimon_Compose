@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.browse.model
 
 /**
- * Screen state contains presentation values; request identities reject obsolete work.
+ * Holds what the catalog displays and the request IDs the reducer uses to check results.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

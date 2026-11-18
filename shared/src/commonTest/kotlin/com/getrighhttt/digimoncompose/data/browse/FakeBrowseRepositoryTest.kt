@@ -14,8 +14,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 /**
- * Checks combined filtering, pagination, empty results, and configured failures in the
- * local catalog.
+ * Checks the offline catalog's filters, pages, and simulated errors.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

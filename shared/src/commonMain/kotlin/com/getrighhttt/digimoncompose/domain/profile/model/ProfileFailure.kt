@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.domain.profile.model
 
 /**
- * Describes profile lookup failures independently of transport errors and UI wording.
+ * Describes what went wrong loading a profile without choosing the UI message.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

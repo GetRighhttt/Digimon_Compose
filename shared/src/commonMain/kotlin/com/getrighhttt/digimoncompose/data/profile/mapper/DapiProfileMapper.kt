@@ -7,7 +7,8 @@ import com.getrighhttt.digimoncompose.domain.profile.model.DigimonSkill
 import io.ktor.http.Url
 
 /**
- * Maps validated profiles and prefers reference-book English descriptions.
+ * Checks that the response matches the requested profile and prefers English text
+ * from the reference book when it is available.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

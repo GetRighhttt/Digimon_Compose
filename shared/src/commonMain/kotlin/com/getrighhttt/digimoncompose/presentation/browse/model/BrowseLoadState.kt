@@ -1,8 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.browse.model
 
 /**
- * Distinguishes initial loading, debounce, refresh, ready content, and replacement
- * failure.
+ * Separates a fresh search from a refresh so the UI can keep showing existing cards.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.domain.profile.model
 
 /**
- * Carries a named profile skill and description independently of source and UI models.
+ * Holds a skill's name and description after mapping the API response.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

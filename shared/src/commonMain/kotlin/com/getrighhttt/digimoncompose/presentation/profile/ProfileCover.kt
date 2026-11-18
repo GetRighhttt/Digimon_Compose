@@ -26,7 +26,8 @@ import com.getrighhttt.digimoncompose.presentation.design.GuideText
 import com.getrighhttt.digimoncompose.presentation.design.LocalFieldGuideColors
 
 /**
- * Connects profile artwork, name, and source stages in one field-guide cover.
+ * Shows artwork, name, and stage together so the profile can identify the Digimon
+ * while its details load.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

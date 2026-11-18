@@ -1,8 +1,7 @@
 package com.getrighhttt.digimoncompose.domain.browse.model
 
 /**
- * Carries accepted catalog identity, name, and optional artwork without depending on
- * source envelopes.
+ * Holds a catalog entry's validated ID and name, plus artwork when available.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

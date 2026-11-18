@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.profile.model
 
 /**
- * Defines profile selection, retry, and closing actions accepted by the profile store.
+ * Describes what the UI asks the profile store to do: open, retry, or close a profile.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

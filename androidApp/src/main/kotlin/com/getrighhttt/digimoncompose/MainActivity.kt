@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.getrighhttt.digimoncompose.app.DigimonApp
 
 /**
- * Hosts the shared app with edge-to-edge drawing and an Android-retained session.
+ * Hosts the shared Compose UI and gets its session from the Android ViewModel.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

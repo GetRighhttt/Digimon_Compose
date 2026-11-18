@@ -16,7 +16,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertIs
 
 /**
- * Runs the same failure, retry, duplicate input, and exit checks against both libraries.
+ * Uses the same steps to compare load, retry, duplicate requests, and cancellation.
  *
  * @author Stefan Bayne
  * @since 2026-11-18
@@ -81,6 +81,7 @@ class FieldReportDemoTest {
         runCurrent()
         assertEquals(ReportState.Loading, state())
 
+        // A retry during the first load must not replace that load's failure.
         retry()
         advanceTimeBy(1_000)
         runCurrent()
@@ -96,6 +97,7 @@ class FieldReportDemoTest {
         fail()
         runCurrent()
         assertEquals(ReportState.Loading, state())
+        // Leaving cancels the load before it can publish a result.
         leave()
         advanceTimeBy(1_000)
         runCurrent()

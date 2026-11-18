@@ -24,7 +24,7 @@ import com.getrighhttt.digimoncompose.presentation.design.GuideText
 import com.getrighhttt.digimoncompose.presentation.design.LocalFieldGuideColors
 
 /**
- * Renders the same sample report controls and states for both frameworks.
+ * Uses the same controls for both demos so the comparison stays focused on state handling.
  *
  * @author Stefan Bayne
  * @since 2026-11-18

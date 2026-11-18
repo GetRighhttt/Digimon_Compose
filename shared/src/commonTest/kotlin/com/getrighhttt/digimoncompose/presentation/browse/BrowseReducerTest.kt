@@ -11,7 +11,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 /**
- * Checks page merging and request-identity rules without scheduling or network access.
+ * Checks that late results are ignored and overlapping pages do not create duplicate cards.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

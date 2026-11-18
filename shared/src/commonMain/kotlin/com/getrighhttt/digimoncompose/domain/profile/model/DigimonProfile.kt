@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.domain.profile.model
 
 /**
- * Accepted profile metadata. Null values mean the source did not supply a value.
+ * Holds validated profile data. Optional fields can be absent or unavailable.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

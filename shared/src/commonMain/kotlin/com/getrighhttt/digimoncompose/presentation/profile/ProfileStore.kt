@@ -15,7 +15,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 /**
- * Serializes profile actions and results within the session's child scope.
+ * Handles profile intents and request results in one loop. It cancels a load when
+ * the user leaves the profile or opens another one.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

@@ -3,8 +3,7 @@ package com.getrighhttt.digimoncompose.app
 import androidx.compose.runtime.Composable
 
 /**
- * Leaves system back unregistered on iOS, where the profile screen provides a visible
- * back action.
+ * On iOS, use the back button drawn by the shared screen.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

@@ -11,7 +11,7 @@ import com.getrighhttt.digimoncompose.domain.browse.repository.BrowseRepository
 import kotlinx.coroutines.delay
 
 /**
- * Deterministic demo catalog. Tests can control latency and request failures.
+ * Lets tests control response time and failures without calling the live catalog.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

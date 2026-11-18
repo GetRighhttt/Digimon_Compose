@@ -5,7 +5,8 @@ import com.getrighhttt.digimoncompose.presentation.browse.model.BrowseError
 import com.getrighhttt.digimoncompose.presentation.browse.model.DigimonCard
 
 /**
- * Internal operation events share the same serialized loop as UI intents.
+ * Describes changes the reducer can apply. Request results carry IDs so the reducer
+ * can ignore a result after a newer request starts.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

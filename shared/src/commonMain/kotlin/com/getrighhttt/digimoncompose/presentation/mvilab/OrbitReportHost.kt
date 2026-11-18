@@ -7,7 +7,8 @@ import org.orbitmvi.orbit.SettingsBuilder
 import org.orbitmvi.orbit.orbitContainer
 
 /**
- * Handles report requests in Orbit intent blocks and commits results with reduce.
+ * Exposes a load function that runs an Orbit intent. The intent does the work and calls
+ * reduce to publish loading and the result.
  *
  * @author Stefan Bayne
  * @since 2026-11-18
@@ -22,6 +23,7 @@ internal class OrbitReportHost(
 
     fun load(simulateFailure: Boolean = false) =
         intent {
+            // Orbit intents can overlap while a load waits. Skip a second request.
             if (!request.tryLock()) return@intent
 
             try {

@@ -7,8 +7,7 @@ import androidx.compose.ui.window.ComposeUIViewController
 import platform.UIKit.UIViewController
 
 /**
- * Hosts shared Compose on iOS and closes both feature stores and their HTTP session
- * when the composition is disposed.
+ * Hosts the shared Compose UI. Disposing it closes the stores and HTTP client.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

@@ -3,7 +3,7 @@ package com.getrighhttt.digimoncompose.data.browse.model
 import kotlinx.serialization.Serializable
 
 /**
- * Decodes one stage-options page with its content envelope and pagination metadata.
+ * Matches the stage list response, including its page information.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

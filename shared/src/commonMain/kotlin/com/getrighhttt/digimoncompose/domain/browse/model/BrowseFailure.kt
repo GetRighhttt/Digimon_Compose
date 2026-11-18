@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.domain.browse.model
 
 /**
- * Describes catalog failures independently of HTTP exceptions and UI wording.
+ * Describes what went wrong without choosing what the UI says about it.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

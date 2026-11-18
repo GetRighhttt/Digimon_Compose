@@ -82,7 +82,7 @@ private fun EntryArtwork(
     card: DigimonCard,
     modifier: Modifier,
 ) {
-    // Source artwork can contain a white background, including in dark appearance.
+    // A white backing blends with artwork that already has a white background.
     Box(modifier.background(Color.White)) {
         SubcomposeAsyncImage(
             card.image,

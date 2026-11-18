@@ -30,8 +30,7 @@ import com.getrighhttt.digimoncompose.generated.resources.splash_agumon
 import org.jetbrains.compose.resources.painterResource
 
 /**
- * Bundled artwork appears offline. Requests start behind this finite entrance
- * animation.
+ * Uses bundled artwork so the splash can play while catalog requests are still running.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

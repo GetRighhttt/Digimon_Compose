@@ -6,7 +6,8 @@ import com.getrighhttt.digimoncompose.domain.browse.model.PageKey
 import com.getrighhttt.digimoncompose.domain.browse.model.SearchCriteria
 
 /**
- * A continuation is meaningful only for the criteria that produced it.
+ * Loads catalog pages and stage filters. Use a next page key with the filters that
+ * produced it.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

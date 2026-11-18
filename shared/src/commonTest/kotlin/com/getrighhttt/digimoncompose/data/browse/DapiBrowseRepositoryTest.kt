@@ -33,8 +33,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 /**
- * Recorded response shapes exercise the real source and mapper without a live
- * dependency.
+ * Feeds HTTP responses to the real catalog repository without calling the live API.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

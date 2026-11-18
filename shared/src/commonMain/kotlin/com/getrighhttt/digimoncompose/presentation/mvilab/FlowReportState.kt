@@ -3,7 +3,7 @@ package com.getrighhttt.digimoncompose.presentation.mvilab
 import pro.respawn.flowmvi.api.MVIState
 
 /**
- * Adapts the shared report model to FlowMVI’s state type.
+ * Implements FlowMVI's state interface so both demos can use the same report model.
  *
  * @author Stefan Bayne
  * @since 2026-11-18

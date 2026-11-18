@@ -22,8 +22,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 /**
- * Checks profile request ordering, retry, cancellation, and reducer rejection of
- * obsolete completions.
+ * Checks what happens when a load fails, the user retries, or a result arrives after leaving.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

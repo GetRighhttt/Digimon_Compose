@@ -19,7 +19,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 /**
- * Checks profile mapping and failure classification through recorded HTTP responses.
+ * Feeds HTTP responses to the real profile repository to check its data and errors.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

@@ -7,7 +7,7 @@ import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileError
 import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileSkill
 
 /**
- * Maps domain profile content and failures into presentation-owned values.
+ * Converts domain profile data and errors into the values the screen displays.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

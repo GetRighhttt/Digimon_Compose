@@ -8,7 +8,8 @@ import com.getrighhttt.digimoncompose.presentation.browse.model.DigimonCard
 import com.getrighhttt.digimoncompose.presentation.browse.model.LevelOptionsState
 
 /**
- * Pure transitions. Obsolete responses never change the current generation.
+ * Returns the next catalog state from the current state and an event. It ignores
+ * late results from requests the catalog no longer tracks.
  *
  * @author Stefan Bayne
  * @since 2026-10-19
@@ -142,6 +143,7 @@ private fun mergeCards(
     existing: List<DigimonCard>,
     incoming: List<DigimonCard>,
 ): List<DigimonCard> =
+    // Keep each card in its original position when a later page repeats its ID.
     linkedMapOf<Int, DigimonCard>()
         .apply {
             existing.forEach { put(it.id, it) }

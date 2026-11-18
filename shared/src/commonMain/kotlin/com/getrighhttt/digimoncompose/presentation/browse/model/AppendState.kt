@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.browse.model
 
 /**
- * Tracks pagination progress and retryable failure separately from catalog replacement.
+ * Keeps next-page loading and errors separate so retrying a page keeps existing cards.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

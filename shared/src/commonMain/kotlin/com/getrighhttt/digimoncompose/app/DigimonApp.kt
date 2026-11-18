@@ -22,7 +22,7 @@ import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileIntent
 import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileState
 
 /**
- * Coordinates splash and destinations while keeping Browse state alive.
+ * Chooses the visible screen and keeps the catalog's state and scroll position alive.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

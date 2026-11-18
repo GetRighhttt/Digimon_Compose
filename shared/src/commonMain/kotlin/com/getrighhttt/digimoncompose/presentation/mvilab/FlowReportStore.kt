@@ -6,7 +6,8 @@ import pro.respawn.flowmvi.dsl.store
 import pro.respawn.flowmvi.plugins.reduce
 
 /**
- * Handles typed intents through FlowMVI’s reduce plugin.
+ * Routes typed UI intents through FlowMVI's reduce plugin. The store publishes loading
+ * and the result as separate state updates.
  *
  * @author Stefan Bayne
  * @since 2026-11-18
@@ -17,6 +18,7 @@ internal fun flowReportStore() =
 
         configure {
             actionShareBehavior = ActionShareBehavior.Disabled
+            // Let a second intent reach the lock now instead of queuing it behind the load.
             parallelIntents = true
         }
 

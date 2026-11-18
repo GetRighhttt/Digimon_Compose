@@ -10,7 +10,8 @@ import io.ktor.http.URLProtocol
 import io.ktor.http.Url
 
 /**
- * Maps validated catalog pages and rebuilds malformed DAPI continuations locally.
+ * Checks catalog pages before accepting them. Reads the next page number from the API
+ * link so the repository can build the next request from its own filters and page size.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

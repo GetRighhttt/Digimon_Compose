@@ -6,7 +6,7 @@ import com.getrighhttt.digimoncompose.presentation.browse.model.BrowseError
 import com.getrighhttt.digimoncompose.presentation.browse.model.DigimonCard
 
 /**
- * Maps domain catalog summaries and failures into presentation-owned cards and errors.
+ * Converts domain results into the cards and errors the catalog displays.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

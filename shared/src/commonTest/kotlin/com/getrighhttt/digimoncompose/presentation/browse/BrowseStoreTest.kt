@@ -31,7 +31,7 @@ import kotlin.test.assertIs
 import kotlin.test.assertTrue
 
 /**
- * Controlled completions exercise request ordering without real time or a live service.
+ * Controls when requests finish to check what happens when their results arrive out of order.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

@@ -4,7 +4,7 @@ import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.okhttp.OkHttp
 
 /**
- * Creates the Android OkHttp engine owned by the shared session.
+ * Uses OkHttp for the shared client's Android requests.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

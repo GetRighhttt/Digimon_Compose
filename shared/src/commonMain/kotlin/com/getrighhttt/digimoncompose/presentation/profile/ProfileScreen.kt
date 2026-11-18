@@ -35,7 +35,7 @@ import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileError
 import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileState
 
 /**
- * Profile sections render only metadata supplied by the source.
+ * Shows profile state and calls back when the user goes back or retries.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

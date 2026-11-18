@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.browse.model
 
 /**
- * Tracks stage-option loading and retry independently of catalog content.
+ * Lets the user retry loading stage filters without reloading the catalog.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

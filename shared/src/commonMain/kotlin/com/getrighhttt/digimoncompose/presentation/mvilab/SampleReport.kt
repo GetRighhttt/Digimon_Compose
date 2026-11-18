@@ -3,7 +3,7 @@ package com.getrighhttt.digimoncompose.presentation.mvilab
 import kotlinx.coroutines.delay
 
 /**
- * Simulates the same cancellable request for either framework.
+ * Returns a sample sighting or failure after a delay so both demos run the same way offline.
  *
  * @author Stefan Bayne
  * @since 2026-11-18

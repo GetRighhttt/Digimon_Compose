@@ -9,7 +9,7 @@ import com.getrighhttt.digimoncompose.domain.profile.repository.ProfileRepositor
 import kotlinx.coroutines.CancellationException
 
 /**
- * Loads profiles and maps failures without hiding cancellation.
+ * Loads profiles and maps API errors. A cancelled load stays cancelled.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

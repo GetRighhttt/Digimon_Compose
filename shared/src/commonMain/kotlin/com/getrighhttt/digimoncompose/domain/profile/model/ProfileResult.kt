@@ -1,7 +1,7 @@
 package com.getrighhttt.digimoncompose.domain.profile.model
 
 /**
- * Returns either an accepted profile or a typed failure to the presentation boundary.
+ * Returns profile data or a failure the screen can handle.
  *
  * @author Stefan Bayne
  * @since 2026-10-19

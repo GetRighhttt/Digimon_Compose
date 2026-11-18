@@ -3,8 +3,7 @@ package com.getrighhttt.digimoncompose.data.profile.model
 import kotlinx.serialization.Serializable
 
 /**
- * Decodes profile metadata with defaults for optional collections and nullable unknown
- * values.
+ * Keeps the API's optional profile fields as received so the mapper can handle missing data.
  *
  * @author Stefan Bayne
  * @since 2026-10-19
