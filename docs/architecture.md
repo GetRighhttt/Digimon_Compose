@@ -18,6 +18,7 @@ Within common code, packages under `com.getrighhttt.digimoncompose` separate res
 - `presentation/browse` and `presentation/profile` contain UI models, intents, stores, pure reducers, and screens.
 - `domain/browse` and `domain/profile` define repository contracts and platform-independent results/models.
 - `data/browse` and `data/profile` decode and validate API data, then map it to domain models. The shared `DapiSource` currently lives under `data/browse/source` and serves both features.
+- `presentation/mvilab` contains a shared report screen and separate FlowMVI and Orbit implementations.
 - `presentation/design` contains the semantic palette, shared controls, and splash.
 - `app` constructs sessions and coordinates the visible screen.
 
@@ -25,9 +26,15 @@ Within common code, packages under `com.getrighhttt.digimoncompose` separate res
 
 The [README MVI diagram](../README.md#mvi-flow) shows the request/result loop and the store's ownership of state. The reducer returns the next state to the store, which publishes it through `StateFlow`.
 
-A store processes intents and operation events through one channel loop. Its coroutine jobs perform I/O and scheduling. The reducer receives an event and previous state, then returns the next state. Composables render state and dispatch intents; they do not call repositories.
+Each catalog or profile store processes intents and operation events through one channel loop. Its coroutine jobs perform I/O and scheduling. The reducer receives an event and previous state, then returns the next state. Composables render state and dispatch intents; they do not call repositories.
 
 DTOs describe the remote payload. Domain models describe accepted application data. Presentation models describe what a screen renders. Mappers bridge these boundaries, so API envelopes and exceptions do not reach the UI.
+
+## MVI comparison lab
+
+The catalog's two lab buttons open the same report screen. FlowMVI receives typed intents through a store and updates state in its `reduce` plugin. Orbit receives calls on a container host and updates state with `reduce` inside an `intent` block. Both call the same offline sample loader. The [lab walkthrough](mvi-lab.md) traces a request in each framework.
+
+Each demo instance belongs to its route. Leaving it cancels the request and discards the instance. Reopening starts with an empty report. The catalog and profile stores keep their existing session ownership.
 
 ## Lifetime
 

@@ -24,6 +24,10 @@ The [shared renderer](../shared/src/commonMain/kotlin/com/getrighhttt/digimoncom
 
 Read [FlowReportStore](../shared/src/commonMain/kotlin/com/getrighhttt/digimoncompose/presentation/mvilab/FlowReportStore.kt) and [OrbitReportHost](../shared/src/commonMain/kotlin/com/getrighhttt/digimoncompose/presentation/mvilab/OrbitReportHost.kt) side by side. Both await the request outside the state update. The [shared behavior tests](../shared/src/commonTest/kotlin/com/getrighhttt/digimoncompose/presentation/mvilab/FieldReportDemoTest.kt) cover failure, retry, overlapping input, and cancellation against both libraries.
 
+## Verification
+
+The lab passed the Android host tests and the Android debug and unsigned iOS simulator builds. The tests run the real FlowMVI store and Orbit container with the same sample request. Use the steps above for an on-device walkthrough. See the [verification record](verification.md) for build commands.
+
 ## What to pilot before choosing
 
 The demo compares the shape of the framework APIs, request ownership, and state delivery. It doesn't evaluate one-off effects, state restoration, or how either library fits a screen that survives navigation. Try an existing feature with all three before committing to the migration. Use the same behavior tests against both versions and compare the amount of glue, where cancellation decisions live, and how easy it is to trace an input to a rendered state.

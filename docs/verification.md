@@ -1,12 +1,14 @@
 # Verification record
 
-Last implementation checks: October 19, 2026. The UI update passed the formatting check, all 50 common tests, the Android debug build, shared iOS compilation, and the complete unsigned iOS host build. Grid, compact list, and profile rendering were checked on the Samsung in light appearance, with an additional dark grid/profile pass.
+On November 18, 2026, the MVI lab passed formatting, the Android debug build, all 52 Android host tests, and the complete unsigned iOS simulator app build. The two lab tests exercise failure, retry, duplicate requests, and cancellation. The lab screens have not had a device pass.
+
+On October 19, 2026, the previous UI checks also passed. That UI update passed the formatting check, all 50 common tests, the Android debug build, shared iOS compilation, and the complete unsigned iOS host build. Grid, compact list, and profile rendering were checked on the Samsung in light appearance, with an additional dark grid/profile pass.
 
 The later readability adjustment also passed formatting, all 50 tests, the Android debug build, and shared iOS simulator compilation. A signed iPhone build succeeded using the locally configured development team and was installed on the connected iPhone 17 Pro.
 
 ## Automated checks
 
-All 50 common tests passed on the Android host, with no failures or skips:
+All 52 common tests passed on the Android host, with no failures or skips:
 
 | Suite | Tests |
 | --- | ---: |
@@ -16,6 +18,7 @@ All 50 common tests passed on the Android host, with no failures or skips:
 | DAPI Browse repository/source | 18 |
 | Profile store/reducer behavior | 5 |
 | DAPI Profile repository/mapping | 5 |
+| Field report (FlowMVI and Orbit) | 2 |
 
 Browse coverage includes debounce timing, criteria changes, cancellation, stale responses, refresh, append retry, overlapping items, empty/final pages, and level-option retry. HTTP tests use a mock engine for malformed continuations, omitted content, metadata mismatches, status errors, transport failure, and mapping. Profile tests cover loading/retry, closing/replacing requests, stale completions, and profile response validation/mapping.
 
@@ -37,7 +40,7 @@ A separate temporary live-client smoke test loaded the catalog, combined name/st
 
 ## Device checks
 
-The current Android build was installed on a physical Samsung SM-G990U. The following checks passed:
+The October UI build was installed on a physical Samsung SM-G990U. The following checks passed:
 
 - Open the initial 20-entry catalog, switch to the compact list, and open Agumon.
 - Return from the profile and confirm the compact layout remains selected.
