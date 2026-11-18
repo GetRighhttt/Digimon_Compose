@@ -53,6 +53,7 @@ import com.getrighhttt.digimoncompose.presentation.design.GuideIconKind
 import com.getrighhttt.digimoncompose.presentation.design.GuideLoading
 import com.getrighhttt.digimoncompose.presentation.design.GuideText
 import com.getrighhttt.digimoncompose.presentation.design.LocalFieldGuideColors
+import com.getrighhttt.digimoncompose.presentation.mvilab.MviDemo
 
 /**
  * Browse has one scrolling content area; only its compact app header stays fixed.
@@ -67,6 +68,7 @@ internal fun BrowseScreen(
     dispatch: (BrowseIntent) -> Unit,
     compact: Boolean,
     onToggleLayout: () -> Unit,
+    onOpenDemo: (MviDemo) -> Unit,
     onOpen: (DigimonCard) -> Unit,
 ) {
     val colors = LocalFieldGuideColors.current
@@ -96,6 +98,16 @@ internal fun BrowseScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
+            item(key = "mvi-lab", span = { GridItemSpan(maxLineSpan) }) {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    GuideText("MVI lab", size = 13, color = colors.secondary)
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        MviDemo.entries.forEach { demo ->
+                            GuideButton(demo.label, { onOpenDemo(demo) }, Modifier.weight(1f))
+                        }
+                    }
+                }
+            }
             item(key = "intro", span = { GridItemSpan(maxLineSpan) }) {
                 SearchField(state.criteria.query) { dispatch(BrowseIntent.QueryChanged(it)) }
             }

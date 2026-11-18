@@ -5,8 +5,12 @@ compose = "1.11.1"
 composeRuntime = "1.11.2"
 activity = "1.13.0"
 coroutines = "1.11.0"
+flowmvi = "3.2.1"
+orbit = "12.0.1"
 
 [libraries]
+flowmvi-core = { module = "pro.respawn.flowmvi:core", version.ref = "flowmvi" }
+orbit-core = { module = "org.orbit-mvi:orbit-core", version.ref = "orbit" }
 compose-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "compose" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version = "3.5.2" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version = "3.5.2" }

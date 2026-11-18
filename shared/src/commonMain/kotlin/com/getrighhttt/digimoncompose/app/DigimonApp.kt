@@ -4,6 +4,7 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -13,13 +14,15 @@ import com.getrighhttt.digimoncompose.presentation.browse.BrowseStore
 import com.getrighhttt.digimoncompose.presentation.browse.model.BrowseIntent
 import com.getrighhttt.digimoncompose.presentation.design.DigimonSplash
 import com.getrighhttt.digimoncompose.presentation.design.FieldGuideTheme
+import com.getrighhttt.digimoncompose.presentation.mvilab.FieldReportDemo
+import com.getrighhttt.digimoncompose.presentation.mvilab.MviDemo
 import com.getrighhttt.digimoncompose.presentation.profile.ProfileScreen
 import com.getrighhttt.digimoncompose.presentation.profile.ProfileStore
 import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileIntent
 import com.getrighhttt.digimoncompose.presentation.profile.model.ProfileState
 
 /**
- * Coordinates splash and profile selection while keeping Browse state alive.
+ * Coordinates splash and destinations while keeping Browse state alive.
  *
  * @author Stefan Bayne
  * @since 2026-10-19
@@ -34,6 +37,7 @@ fun DigimonApp(
     val gridState = rememberLazyGridState()
     var compactCatalog by rememberSaveable { mutableStateOf(false) }
     var showSplash by rememberSaveable { mutableStateOf(true) }
+    var demo by rememberSaveable { mutableStateOf<MviDemo?>(null) }
     var selectedId by rememberSaveable { mutableStateOf<Int?>(null) }
     var selectedName by rememberSaveable { mutableStateOf("") }
     var selectedImage by rememberSaveable { mutableStateOf<String?>(null) }
@@ -43,9 +47,14 @@ fun DigimonApp(
         selectedId?.let { profileStore.dispatch(ProfileIntent.Open(it)) }
             ?: profileStore.dispatch(ProfileIntent.Closed)
     }
-    PlatformBackHandler(selectedId != null) { selectedId = null }
+    PlatformBackHandler(demo != null || selectedId != null) {
+        if (demo != null) demo = null else selectedId = null
+    }
+    val activeDemo = demo
     if (showSplash) {
         DigimonSplash { showSplash = false }
+    } else if (activeDemo != null) {
+        key(activeDemo) { FieldReportDemo(activeDemo) { demo = null } }
     } else if (selectedId == null) {
         BrowseScreen(
             state,
@@ -53,6 +62,7 @@ fun DigimonApp(
             store::dispatch,
             compactCatalog,
             { compactCatalog = !compactCatalog },
+            onOpenDemo = { demo = it },
         ) {
             selectedId = it.id
             selectedName = it.name

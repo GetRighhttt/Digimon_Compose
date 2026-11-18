@@ -35,6 +35,8 @@ kotlin {
             implementation(libs.compose.runtime)
             implementation(libs.compose.ui)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.flowmvi.core)
+            implementation(libs.orbit.core)
         }
         androidMain.dependencies {
             implementation(libs.androidx.activity.compose)

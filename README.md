@@ -47,6 +47,10 @@ Captured on a Samsung SM-G990U on October 19, 2026, before the latest text-size 
 
 Browse and Profile each have a serialized MVI store and a pure reducer. Cancellation stops obsolete work; request identities reject late responses. DTOs, domain models, and presentation models are separate. Android and iOS share the screens and feature logic, with platform HTTP engines and lifecycle owners.
 
+## MVI comparison lab
+
+Open **FlowMVI** or **Orbit** at the top of the catalog to try the same Field report with each framework. The demo shows loading, failure, and retry with predictable offline data. See the [team walkthrough](docs/mvi-lab.md) for the comparison and what to test before choosing a library.
+
 ## MVI flow
 
 This diagram follows Browse. Profile uses the same pattern with its own store, events, and state. `BrowseIntent` represents actions such as searching, refreshing, or loading another page.
