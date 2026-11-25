@@ -1,6 +1,7 @@
 package com.getrighhttt.digimoncompose.presentation.mvilab
 
 import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.milliseconds
 
 /**
  * Returns a sample sighting or failure after a delay so both demos run the same way offline.
@@ -9,7 +10,7 @@ import kotlinx.coroutines.delay
  * @since 2026-11-18
  */
 internal suspend fun loadSampleReport(simulateFailure: Boolean): ReportState {
-    delay(900)
+    delay(900.milliseconds)
     return if (simulateFailure) {
         ReportState.Failed
     } else {

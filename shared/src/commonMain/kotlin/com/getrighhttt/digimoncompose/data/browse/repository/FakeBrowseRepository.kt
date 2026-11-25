@@ -9,6 +9,7 @@ import com.getrighhttt.digimoncompose.domain.browse.model.PageKey
 import com.getrighhttt.digimoncompose.domain.browse.model.SearchCriteria
 import com.getrighhttt.digimoncompose.domain.browse.repository.BrowseRepository
 import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.milliseconds
 
 /**
  * Lets tests control response time and failures without calling the live catalog.
@@ -30,7 +31,7 @@ class FakeBrowseRepository(
         criteria: SearchCriteria,
         page: PageKey,
     ): BrowseResult<BrowsePage> {
-        delay(latencyMillis)
+        delay(latencyMillis.milliseconds)
         if (shouldFail(criteria, page)) return BrowseResult.Failure(BrowseFailure.Unavailable)
         val matches =
             records.filter {
@@ -47,7 +48,7 @@ class FakeBrowseRepository(
     }
 
     override suspend fun levels(): BrowseResult<List<String>> {
-        delay(latencyMillis)
+        delay(latencyMillis.milliseconds)
         return BrowseResult.Success(records.map { it.level }.distinct())
     }
 
